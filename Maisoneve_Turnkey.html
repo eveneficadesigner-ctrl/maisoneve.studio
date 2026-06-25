@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интерьер под ключ — Maisoneve</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F0E8; --bg-deep: #1C1C1C; --ink: #1C1C1C; --ink-soft: #3A2A1E;
+  --mute: #C8B89A; --gold: #9C7D4A; --hair: #D9CCB4; --paper: #EDE8DF;
+  --display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-weight: 300; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 48px; mix-blend-mode: difference; color: #F5F0E8;
+}
+nav .brand { font-size: 13px; letter-spacing: 0.45em; font-weight: 400; }
+nav .back { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; color: inherit; text-decoration: none; opacity: 0.85; transition: opacity 0.2s; }
+nav .back:hover { opacity: 1; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; background: var(--bg-deep);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 48px 80px; position: relative; overflow: hidden;
+}
+.hero-promise {
+  position: absolute; top: 50%; left: 48px; right: 48px;
+  transform: translateY(-50%);
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(13px, 1.2vw, 17px); letter-spacing: 0.25em;
+  color: rgba(245,241,234,0.18); text-transform: uppercase; text-align: center;
+  opacity: 0; animation: fadeIn 2s ease 0.5s forwards;
+}
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.5em; text-transform: uppercase;
+  font-weight: 400; color: rgba(245,241,234,0.5); margin-bottom: 28px; display: block;
+  opacity: 0; animation: fadeUp 1.4s ease 0.4s forwards;
+}
+.hero h1 {
+  font-family: var(--display); font-weight: 300;
+  font-size: clamp(56px, 9vw, 116px);
+  line-height: 0.92; letter-spacing: -0.025em;
+  color: var(--paper); max-width: 900px;
+  opacity: 0; animation: fadeUp 1.4s ease 0.7s forwards;
+}
+.hero h1 em { font-style: italic; color: var(--gold); display: block; }
+.hero-bottom {
+  margin-top: 56px; display: flex; align-items: flex-end; justify-content: space-between;
+  opacity: 0; animation: fadeUp 1.4s ease 1s forwards;
+}
+.hero-scroll { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,241,234,0.3); display: flex; align-items: center; gap: 16px; }
+.hero-scroll::before { content: ''; display: block; width: 48px; height: 1px; background: rgba(160,130,90,0.4); }
+.hero-tagline { font-family: var(--display); font-style: italic; font-size: 18px; color: rgba(245,241,234,0.45); text-align: right; max-width: 340px; line-height: 1.5; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* COMMON */
+section { padding: 112px 48px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.narrow { max-width: 720px; margin: 0 auto; }
+.eyebrow { font-size: 11px; letter-spacing: 0.45em; text-transform: uppercase; font-weight: 400; color: var(--gold); margin-bottom: 32px; display: inline-block; }
+.eyebrow::before { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); margin-right: 20px; vertical-align: middle; }
+h2 { font-family: var(--display); font-weight: 300; font-size: clamp(34px, 4.5vw, 54px); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 24px; }
+h3 { font-family: var(--display); font-weight: 400; font-size: 22px; margin-bottom: 10px; }
+p { font-size: 16px; line-height: 1.75; color: var(--ink-soft); }
+p + p { margin-top: 14px; }
+.divider-line { height: 1px; background: var(--hair); margin: 0 48px; }
+
+/* FOUNDER */
+.founder { background: var(--bg-deep); padding: 96px 48px; }
+.founder-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: 1px 1fr; gap: 52px; align-items: start; }
+.founder-line { width: 1px; background: linear-gradient(to bottom, var(--gold), rgba(160,130,90,0)); min-height: 200px; }
+.founder-label { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: block; font-weight: 400; }
+.founder-quote { font-family: var(--display); font-weight: 300; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.45; color: var(--paper); margin-bottom: 24px; }
+.founder-body { font-size: 15px; line-height: 1.8; color: rgba(245,241,234,0.5); }
+.founder-sig { margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(221,210,192,0.12); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+/* FOR WHOM */
+.forwhom { background: var(--paper); }
+.forwhom-intro { max-width: 600px; margin-bottom: 56px; }
+.forwhom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--hair); }
+.forwhom-card { background: var(--paper); padding: 44px 36px; }
+.forwhom-card-mark { font-family: var(--display); font-style: italic; font-size: 13px; color: var(--gold); display: block; margin-bottom: 20px; letter-spacing: 0.1em; }
+.forwhom-card h3 { font-size: 20px; margin-bottom: 12px; line-height: 1.3; }
+.forwhom-card p { font-size: 14px; color: var(--mute); line-height: 1.75; }
+
+/* INCLUDED */
+.included { background: var(--bg); }
+.included-intro { max-width: 580px; margin-bottom: 56px; }
+.included-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid var(--hair); }
+.included-block { padding: 44px 32px; border-right: 1px solid var(--hair); }
+.included-block:last-child { border-right: none; }
+.included-tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 18px; font-weight: 400; }
+.included-block h3 { font-size: 20px; margin-bottom: 14px; }
+.inc-list { list-style: none; margin-top: 16px; }
+.inc-list li { font-size: 13px; color: var(--mute); padding: 8px 0; border-bottom: 1px solid var(--hair); display: flex; align-items: baseline; gap: 12px; line-height: 1.4; }
+.inc-list li:last-child { border-bottom: none; }
+.inc-list li::before { content: ''; display: inline-block; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
+/* SUPERVISION */
+.supervision { background: var(--bg-deep); color: var(--paper); }
+.supervision .eyebrow { color: var(--gold); }
+.supervision h2 { color: var(--paper); }
+.supervision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 48px; }
+.supervision-left p { font-size: 16px; line-height: 1.8; color: rgba(245,241,234,0.55); }
+.sup-item { padding: 24px 0; border-bottom: 1px solid rgba(221,210,192,0.1); display: grid; grid-template-columns: 36px 1fr; gap: 16px; }
+.sup-item:last-child { border-bottom: none; }
+.sup-mark { font-family: var(--display); font-style: italic; font-size: 20px; color: var(--gold); line-height: 1.2; }
+.sup-item h3 { color: var(--paper); font-size: 17px; margin-bottom: 6px; }
+.sup-item p { font-size: 13px; color: rgba(245,241,234,0.4); line-height: 1.65; }
+
+/* PROCUREMENT */
+.procurement { background: var(--paper); }
+.procurement-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.procurement-text p { font-size: 16px; line-height: 1.8; color: var(--ink-soft); }
+.proc-box { background: var(--bg); padding: 40px 36px; border-left: 2px solid var(--gold); }
+.proc-box-title { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; font-weight: 400; display: block; }
+.proc-step { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+.proc-step:last-child { border-bottom: none; }
+.proc-num { font-family: var(--display); font-style: italic; font-size: 16px; color: var(--gold); flex-shrink: 0; width: 20px; }
+.proc-step p { font-size: 13px; color: var(--ink-soft); line-height: 1.65; margin: 0; }
+
+/* PROCESS */
+.process { background: var(--bg); }
+.process-timeline { margin-top: 64px; }
+.timeline-item { display: grid; grid-template-columns: 160px 1px 1fr; gap: 0 36px; }
+.timeline-left { text-align: right; padding: 36px 0; }
+.timeline-left-num { font-family: var(--display); font-style: italic; font-size: 12px; color: var(--gold); letter-spacing: 0.15em; display: block; margin-bottom: 6px; }
+.timeline-left-title { font-family: var(--display); font-size: 18px; color: var(--ink); font-weight: 400; line-height: 1.3; }
+.timeline-spine { display: flex; flex-direction: column; align-items: center; }
+.timeline-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 40px; position: relative; z-index: 2; }
+.timeline-line { width: 1px; flex: 1; background: var(--hair); }
+.timeline-item:last-child .timeline-line { display: none; }
+.timeline-content { padding: 34px 0; }
+.timeline-content p { font-size: 14px; color: var(--mute); line-height: 1.75; max-width: 460px; }
+
+/* PRINCIPLES */
+.principles { background: var(--paper); }
+.principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; border-top: 1px solid var(--hair); border-left: 1px solid var(--hair); }
+.principle-item { padding: 40px 36px; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.principle-num { font-family: var(--display); font-style: italic; font-size: 36px; font-weight: 300; color: var(--hair); line-height: 1; margin-bottom: 16px; display: block; }
+.principle-item h3 { font-size: 19px; margin-bottom: 10px; }
+.principle-item p { font-size: 13px; color: var(--mute); line-height: 1.75; }
+
+/* PRICE */
+.price-section {
+  background: var(--bg-deep); color: var(--paper);
+  padding: 160px 48px; position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+}
+.price-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(160,130,90,0.07) 0%, transparent 60%); pointer-events: none; }
+.price-left { position: relative; z-index: 2; }
+.price-left .eyebrow { color: var(--gold); }
+.price-left h2 { color: var(--paper); margin-bottom: 16px; }
+.price-left p { font-size: 15px; color: rgba(245,241,234,0.5); line-height: 1.8; }
+.price-right { position: relative; z-index: 2; text-align: center; }
+.price-word { font-family: var(--display); font-size: clamp(64px, 10vw, 120px); font-weight: 300; font-style: italic; line-height: 1; color: var(--paper); display: block; letter-spacing: -0.02em; margin-bottom: 20px; }
+.price-note { font-family: var(--display); font-style: italic; font-size: 17px; color: rgba(245,241,234,0.35); line-height: 1.6; }
+
+/* CTA */
+.cta { background: var(--bg); padding: 140px 48px; }
+.cta-inner { max-width: 640px; }
+.cta-inner .eyebrow { margin-bottom: 24px; }
+.cta-inner h2 { margin-bottom: 48px; }
+.cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.cta-button-primary { display: inline-block; padding: 20px 48px; background: var(--ink); color: var(--paper); font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; }
+.cta-button-primary:hover { background: var(--gold); }
+.cta-button-secondary { display: inline-block; padding: 20px 32px; border: 1px solid var(--hair); color: var(--mute); font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; }
+.cta-button-secondary:hover { border-color: var(--gold); color: var(--ink); }
+.cta-channels { margin-top: 48px; display: flex; gap: 32px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.15em; }
+.cta-channels a { color: var(--mute); text-decoration: none; transition: color 0.2s; }
+.cta-channels a:hover { color: var(--ink); }
+
+footer { background: var(--bg-deep); color: rgba(245,241,234,0.4); text-align: center; padding: 36px 48px; font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; }
+
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s ease, transform 1s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  section { padding: 80px 24px; }
+  .hero { padding: 0 24px 60px; }
+  .hero-promise { display: none; }
+  .hero-bottom { flex-direction: column; gap: 20px; }
+  .hero-tagline { text-align: left; }
+  .founder { padding: 80px 24px; }
+  .founder-inner { grid-template-columns: 1fr; gap: 0; }
+  .founder-line { display: none; }
+  .forwhom-grid { grid-template-columns: 1fr; }
+  .included-grid { grid-template-columns: 1fr; }
+  .included-block { border-right: none; border-bottom: 1px solid var(--hair); }
+  .included-block:last-child { border-bottom: none; }
+  .supervision-grid { grid-template-columns: 1fr; gap: 40px; }
+  .procurement-inner { grid-template-columns: 1fr; gap: 36px; }
+  .timeline-item { grid-template-columns: 1fr; }
+  .timeline-left { text-align: left; padding: 28px 0 6px; }
+  .timeline-spine { display: none; }
+  .timeline-content { padding: 0 0 28px; border-bottom: 1px solid var(--hair); }
+  .timeline-item:last-child .timeline-content { border-bottom: none; }
+  .principles-grid { grid-template-columns: 1fr; }
+  .price-section { grid-template-columns: 1fr; padding: 100px 24px; gap: 40px; }
+  .price-right { text-align: left; }
+  .cta { padding: 80px 24px; }
+  .divider-line { margin: 0 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="Maisoneve.html" class="brand" style="text-decoration:none; color:inherit;">MAISONEVE</a>
+  <div style="display:flex; gap:36px;">
+    <a href="Maisoneve_Projects.html" class="back">Проекты</a>
+    <a href="Maisoneve_Services.html" class="back">Услуги</a>
+    <a href="Maisoneve_About.html" class="back">О студии</a>
+    <a href="Maisoneve_Contact.html" class="back">Связаться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-promise">Дом, который знает, как вы живёте</div>
+  <span class="hero-eyebrow">Услуга — Интерьер под ключ</span>
+  <h1>От первого<br>разговора<br><em>до последнего гвоздя</em></h1>
+  <div class="hero-bottom">
+    <div class="hero-scroll">Листайте вниз</div>
+    <p class="hero-tagline">Дизайн, реализация, комплектация. Один путь — полное сопровождение.</p>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="founder-inner">
+    <div class="founder-line"></div>
+    <div class="reveal">
+      <span class="founder-label">Слово основателя</span>
+      <p class="founder-quote">«Я начинаю каждый проект с одного вопроса: как вы хотите жить в этом доме?»</p>
+      <p class="founder-body">Не какой стиль вам нравится. Не какой бюджет. А именно — как вы живёте. Где вы отдыхаете. Что раздражает в нынешнем пространстве. Это единственный способ создать интерьер, который работает на вас, а не просто хорошо выглядит на фотографии.</p>
+      <div class="founder-sig">Eve — основатель Maisoneve</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- FOR WHOM -->
+<section class="forwhom">
+  <div class="container reveal">
+    <span class="eyebrow">Для кого</span>
+    <div class="forwhom-intro">
+      <h2>Для тех, кто строит<br>один раз и надолго.</h2>
+    </div>
+    <div class="forwhom-grid">
+      <div class="forwhom-card">
+        <span class="forwhom-card-mark">i.</span>
+        <h3>Новое жильё</h3>
+        <p>Черновая отделка или ремонт. Хотите сделать это пространство своим — один раз, без переделок через два года.</p>
+      </div>
+      <div class="forwhom-card">
+        <span class="forwhom-card-mark">ii.</span>
+        <h3>Загородный дом</h3>
+        <p>Большой проект, много решений. Нужен партнёр, который пройдёт этот путь рядом — от планировки до расстановки мебели.</p>
+      </div>
+      <div class="forwhom-card">
+        <span class="forwhom-card-mark">iii.</span>
+        <h3>Переосмысление</h3>
+        <p>Квартира перестала отражать вас. Глубокая переработка — с сохранением того, что дорого, и заменой того, что мешает.</p>
+      </div>
+      <div class="forwhom-card">
+        <span class="forwhom-card-mark">iv.</span>
+        <h3>Результат без участия в процессе</h3>
+        <p>Вы не хотите тратить вечера на выбор плитки. Вы хотите приехать в готовое пространство — именно то, о чём говорили на первой встрече.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- INCLUDED -->
+<section class="included">
+  <div class="container reveal">
+    <span class="eyebrow">Что входит</span>
+    <div class="included-intro">
+      <h2>Три части одного пути</h2>
+    </div>
+    <div class="included-grid">
+      <div class="included-block">
+        <span class="included-tag">Часть первая</span>
+        <h3>Дизайн-проект</h3>
+        <ul class="inc-list">
+          <li>Планировочное решение</li>
+          <li>Полный комплект чертежей</li>
+          <li>Развёртки помещений</li>
+          <li>Планы электрики и сантехники</li>
+          <li>Визуализации ключевых зон</li>
+          <li>Ведомости и спецификации</li>
+        </ul>
+      </div>
+      <div class="included-block">
+        <span class="included-tag">Часть вторая</span>
+        <h3>Авторский надзор</h3>
+        <ul class="inc-list">
+          <li>До 5 выездов на объект в месяц</li>
+          <li>Фото- и видеофиксация</li>
+          <li>Письменный отчёт после каждого визита</li>
+          <li>Согласование замен материалов</li>
+          <li>Связь с бригадой</li>
+          <li>Финальная приёмка объекта</li>
+        </ul>
+      </div>
+      <div class="included-block">
+        <span class="included-tag">Часть третья</span>
+        <h3>Комплектация</h3>
+        <ul class="inc-list">
+          <li>Подбор мебели, света, текстиля</li>
+          <li>Ссылки и счета от поставщиков</li>
+          <li>Оплата напрямую — без наценок</li>
+          <li>Контроль сроков поставки</li>
+          <li>Приёмка и проверка материалов</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- SUPERVISION -->
+<section class="supervision">
+  <div class="container reveal">
+    <span class="eyebrow">Авторский надзор</span>
+    <h2>Мы на объекте<br>по графику, не по звонку.</h2>
+    <div class="supervision-grid">
+      <div class="supervision-left">
+        <p>До пяти выездов в месяц — плановых, с фиксацией и отчётом. Бригада знает, что мы приедем. Это меняет качество работы.</p>
+        <p>Каждый проект ведёт ведущий дизайнер студии под личным контролем основателя — на ключевых этапах и финальной приёмке.</p>
+      </div>
+      <div class="supervision-right">
+        <div class="sup-item">
+          <span class="sup-mark">↗</span>
+          <div>
+            <h3>Плановые выезды</h3>
+            <p>Осмотр, фото- и видеофиксация, письменный отчёт с замечаниями после каждого визита.</p>
+          </div>
+        </div>
+        <div class="sup-item">
+          <span class="sup-mark">↗</span>
+          <div>
+            <h3>Согласование замен</h3>
+            <p>Если материала нет в наличии — мы принимаем это решение, не вы.</p>
+          </div>
+        </div>
+        <div class="sup-item">
+          <span class="sup-mark">↗</span>
+          <div>
+            <h3>Связь с бригадой</h3>
+            <p>Технические вопросы по чертежам идут через нас. Вы не разбираетесь в деталях.</p>
+          </div>
+        </div>
+        <div class="sup-item">
+          <span class="sup-mark">↗</span>
+          <div>
+            <h3>Финальная приёмка</h3>
+            <p>Принимаем объект вместе с вами. С чек-листом и правом потребовать переделок.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- PROCUREMENT -->
+<section class="procurement">
+  <div class="container reveal">
+    <span class="eyebrow">Комплектация</span>
+    <div class="procurement-inner">
+      <div class="procurement-text">
+        <h2>Вы оплачиваете.<br>Мы делаем остальное.</h2>
+        <p>Мы подбираем всё — от напольного покрытия до аксессуаров. Отправляем точные ссылки и счета от поставщиков, вы оплачиваете напрямую — без наценок через студию.</p>
+        <p>Контроль сроков, приёмка и проверка каждой позиции — на нас.</p>
+      </div>
+      <div class="proc-box">
+        <span class="proc-box-title">Как это работает</span>
+        <div class="proc-step">
+          <span class="proc-num">1</span>
+          <p>Подбираем всё по спецификации проекта и бюджету</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">2</span>
+          <p>Отправляем ссылки и счета от поставщиков</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">3</span>
+          <p>Вы оплачиваете напрямую</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">4</span>
+          <p>Контролируем сроки и встречаем поставку на объекте</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">5</span>
+          <p>Проверяем каждую позицию — только после этого в работу</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container reveal">
+    <span class="eyebrow">Процесс</span>
+    <h2>Как это происходит</h2>
+    <div class="process-timeline">
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-left-num">Шаг первый</span>
+          <span class="timeline-left-title">Первый разговор</span>
+        </div>
+        <div class="timeline-spine"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><p>Говорим о том, как вы живёте — не о стилях и бюджете. На этом разговоре строится всё остальное.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-left-num">Шаг второй</span>
+          <span class="timeline-left-title">Обмеры и концепция</span>
+        </div>
+        <div class="timeline-spine"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><p>Выезжаем на объект. Разрабатываем концепцию — стиль, атмосфера, материалы — и согласовываем до начала проектирования.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-left-num">Шаг третий</span>
+          <span class="timeline-left-title">Проект</span>
+        </div>
+        <div class="timeline-spine"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><p>Планировка, чертежи, спецификации. Поэтапно, с согласованием на ключевых точках.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-left-num">Шаг четвёртый</span>
+          <span class="timeline-left-title">Строительство</span>
+        </div>
+        <div class="timeline-spine"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><p>Бригада работает по нашим чертежам. Мы на объекте регулярно — с отчётом после каждого визита.</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-left-num">Шаг пятый</span>
+          <span class="timeline-left-title">Комплектация и финал</span>
+        </div>
+        <div class="timeline-spine"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content"><p>Подбираем и координируем поставку всего. Принимаем объект. Вы приезжаете в готовое пространство.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+  <div class="container reveal">
+    <span class="eyebrow">Наши принципы</span>
+    <h2>Что остаётся неизменным</h2>
+    <div class="principles-grid">
+      <div class="principle-item">
+        <span class="principle-num">01</span>
+        <h3>Вневременность</h3>
+        <p>Натуральные материалы, выверенные пропорции. Интерьер, который через десять лет не потребует переделки.</p>
+      </div>
+      <div class="principle-item">
+        <span class="principle-num">02</span>
+        <h3>Один голос</h3>
+        <p>Ведущий дизайнер студии под контролем основателя — от первой встречи до последнего гвоздя. Без передачи между менеджерами.</p>
+      </div>
+      <div class="principle-item">
+        <span class="principle-num">03</span>
+        <h3>Функция прежде всего</h3>
+        <p>Каждое решение обосновано тем, как вы живёте — не тем, как это выглядит в портфолио.</p>
+      </div>
+      <div class="principle-item">
+        <span class="principle-num">04</span>
+        <h3>Прозрачность</h3>
+        <p>Отчёт после каждого выезда. Честный разговор о проблемах. Никаких сюрпризов в конце.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section">
+  <div class="price-left reveal">
+    <span class="eyebrow">Стоимость</span>
+    <h2>Интерьер под ключ</h2>
+    <p>Стоимость рассчитывается индивидуально — после первого разговора об объекте и задаче. Она зависит от метража, сложности и объёма комплектации.</p>
+  </div>
+  <div class="price-right reveal">
+    <span class="price-word">по запросу</span>
+    <p class="price-note">Один проект.<br>Один путь.<br>От начала до конца.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner reveal">
+    <span class="eyebrow">Начать</span>
+    <h2>Расскажите,<br>как вы хотите жить.</h2>
+    <div class="cta-buttons">
+      <a href="Maisoneve_Contact.html" class="cta-button-primary">Рассказать о проекте</a>
+      <a href="https://t.me/maisoneve" class="cta-button-secondary">Telegram · @maisoneve</a>
+    </div>
+    <div class="cta-channels">
+      <a href="https://maisoneve.studio">maisoneve.studio</a>
+      <a href="https://instagram.com/maisoneve.studio">Instagram · @maisoneve.studio</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background: #1C1C1C; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+  <a href="Maisoneve.html" style="font-family: Cormorant Garamond, serif; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;">Maisoneve</a>
+  <div style="display: flex; gap: 36px; font-size: 12px; flex-wrap: wrap;">
+    <a href="https://maisoneve.studio" style="color: rgba(255,255,255,0.3); text-decoration: none;">maisoneve.studio</a>
+    <a href="https://t.me/maisoneve" style="color: rgba(255,255,255,0.3); text-decoration: none;">Telegram · @maisoneve</a>
+    <a href="https://instagram.com/maisoneve.studio" style="color: rgba(255,255,255,0.3); text-decoration: none;">Instagram · @maisoneve.studio</a>
+  </div>
+  <p style="font-size: 11px; color: rgba(255,255,255,0.18);">© 2026 Maisoneve</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(r => io.observe(r));
+</script>
+</body>
+</html>

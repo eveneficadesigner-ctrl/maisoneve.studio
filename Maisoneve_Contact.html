@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Связаться — Maisoneve</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --walnut:     #3A2A1E;
+    --travertine: #D9CCB4;
+    --brass:      #9C7D4A;
+    --linen:      #C8B89A;
+    --dark:       #1C1C1C;
+    --cream:      #F5F0E8;
+    --cream-mid:  #EDE8DF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(28,28,28,0.96);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: #fff; }
+
+  /* ── PAGE LAYOUT ── */
+  .page-wrap {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── LEFT PANEL ── */
+  .left-panel {
+    background: var(--dark);
+    padding: 160px 64px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  .left-top {}
+  .left-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 32px;
+  }
+  .left-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+  .left-title em {
+    font-style: italic;
+    color: var(--travertine);
+  }
+  .left-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.8;
+    max-width: 320px;
+  }
+
+  /* tabs switcher */
+  .tab-switcher {
+    display: flex;
+    gap: 0;
+    margin-top: 56px;
+    border: 1px solid rgba(255,255,255,0.12);
+    width: fit-content;
+  }
+  .tab-btn {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding: 13px 32px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: color 0.25s, background 0.25s;
+    font-family: 'Inter', sans-serif;
+  }
+  .tab-btn + .tab-btn {
+    border-left: 1px solid rgba(255,255,255,0.12);
+  }
+  .tab-btn.active {
+    color: #fff;
+    background: rgba(156,125,74,0.2);
+  }
+  .tab-btn:hover:not(.active) {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .left-bottom {}
+  .left-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .left-contacts a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.25s;
+  }
+  .left-contacts a:hover { color: var(--linen); }
+
+  /* ── RIGHT PANEL ── */
+  .right-panel {
+    background: var(--cream);
+    padding: 140px 64px 80px;
+  }
+
+  /* tab panels */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── FORM ── */
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .form-sub {
+    font-size: 13px;
+    color: rgba(28,28,28,0.45);
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+
+  .form-group {
+    margin-bottom: 32px;
+  }
+  .form-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 10px;
+  }
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(58,42,30,0.2);
+    padding: 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: rgba(28,28,28,0.3); }
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus { border-color: var(--brass); }
+
+  .form-textarea {
+    resize: none;
+    height: 80px;
+    line-height: 1.6;
+  }
+
+  /* contact type toggle */
+  .contact-toggle {
+    display: flex;
+    gap: 24px;
+    margin-top: 4px;
+  }
+  .toggle-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: rgba(28,28,28,0.6);
+  }
+  .toggle-opt input[type="radio"] { display: none; }
+  .toggle-dot {
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(58,42,30,0.3);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.25s;
+  }
+  .toggle-opt input:checked ~ .toggle-dot {
+    border-color: var(--brass);
+  }
+  .toggle-opt input:checked ~ .toggle-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--brass);
+  }
+
+  /* service checkboxes */
+  .service-checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    margin-top: 4px;
+  }
+  .check-opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: rgba(28,28,28,0.65);
+  }
+  .check-opt input[type="checkbox"] { display: none; }
+  .check-box {
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(58,42,30,0.3);
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.25s;
+  }
+  .check-opt input:checked ~ .check-box {
+    border-color: var(--brass);
+    background: var(--brass);
+  }
+  .check-opt input:checked ~ .check-box::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 5px;
+    width: 4px; height: 7px;
+    border: 1.5px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+
+  /* partner category pills */
+  .category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .pill-opt { display: none; }
+  .pill-label {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: rgba(28,28,28,0.55);
+    border: 1px solid rgba(58,42,30,0.18);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    user-select: none;
+  }
+  .pill-opt:checked + .pill-label {
+    border-color: var(--brass);
+    color: var(--walnut);
+    background: rgba(156,125,74,0.08);
+  }
+
+  /* submit button */
+  .form-submit {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--walnut);
+    border: none;
+    padding: 17px 48px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--brass); }
+
+  .form-note {
+    font-size: 12px;
+    color: rgba(28,28,28,0.35);
+    margin-top: 20px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .left-panel {
+      position: static;
+      height: auto;
+      padding: 120px 24px 56px;
+    }
+    .right-panel { padding: 56px 24px 72px; }
+    nav { padding: 0 24px; }
+    .nav-links { gap: 24px; }
+    .service-checks { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .left-title { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="Maisoneve.html" class="nav-logo">Maisoneve</a>
+  <ul class="nav-links">
+    <li><a href="Maisoneve_Projects.html">Проекты</a></li>
+    <li><a href="Maisoneve_Services.html">Услуги</a></li>
+    <li><a href="Maisoneve_About.html">О студии</a></li>
+    <li><a href="Maisoneve_Contact.html" class="active">Связаться</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="left-top">
+      <p class="left-eyebrow">Maisoneve · Связаться</p>
+      <h1 class="left-title">Узнайте,<br>подходим ли мы<br><em>друг другу</em></h1>
+      <p class="left-sub">Расскажите о вашем проекте или о себе — мы читаем каждое обращение и вернёмся, если увидим совпадение.</p>
+
+      <div class="tab-switcher">
+        <button class="tab-btn active" onclick="switchTab('client', this)">Клиент</button>
+        <button class="tab-btn" onclick="switchTab('partner', this)">Партнёр</button>
+      </div>
+    </div>
+
+    <div class="left-bottom">
+      <div class="left-contacts">
+        <a href="https://t.me/maisoneve">Telegram · @maisoneve</a>
+        <a href="https://instagram.com/maisoneve.studio">Instagram · @maisoneve.studio</a>
+        <a href="mailto:hello@maisoneve.studio">hello@maisoneve.studio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+
+    <!-- TAB: CLIENT -->
+    <div class="tab-panel active" id="tab-client">
+      <h2 class="form-title">Расскажите о проекте</h2>
+      <p class="form-sub">Заполните форму — и мы свяжемся с вами, чтобы обсудить детали.</p>
+
+      <form>
+        <div class="form-group">
+          <label class="form-label">Ваше имя</label>
+          <input class="form-input" type="text" placeholder="Как вас зовут">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Способ связи</label>
+          <div class="contact-toggle">
+            <label class="toggle-opt">
+              <input type="radio" name="contact_type" value="telegram" checked>
+              <span class="toggle-dot"></span>
+              Telegram
+            </label>
+            <label class="toggle-opt">
+              <input type="radio" name="contact_type" value="email">
+              <span class="toggle-dot"></span>
+              Email
+            </label>
+          </div>
+          <input class="form-input" type="text" placeholder="@username или адрес почты" style="margin-top: 14px;">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Что вас интересует</label>
+          <div class="service-checks">
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Консультация</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Концепция</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Планировочное решение</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Дизайн-проект</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Интерьер под ключ</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Интерьер для инвестиций</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Home Staging</label>
+            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Пока не знаю</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Площадь объекта</label>
+          <input class="form-input" type="text" placeholder="Примерно, м²">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Расскажите о проекте</label>
+          <textarea class="form-textarea" placeholder="Что важно для вас, какой результат ожидаете, есть ли сроки — всё, что считаете нужным"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Рассказать о проекте</button>
+        <p class="form-note">Мы свяжемся с вами в течение одного рабочего дня.</p>
+      </form>
+    </div>
+
+    <!-- TAB: PARTNER -->
+    <div class="tab-panel" id="tab-partner">
+      <h2 class="form-title">Работать вместе</h2>
+      <p class="form-sub">Maisoneve открыта к партнёрству с теми, кто разделяет наш стандарт — внимательность, качество, уважение к деталям.</p>
+
+      <form>
+        <div class="form-group">
+          <label class="form-label">Ваше имя</label>
+          <input class="form-input" type="text" placeholder="Как вас зовут">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Способ связи</label>
+          <div class="contact-toggle">
+            <label class="toggle-opt">
+              <input type="radio" name="partner_contact" value="telegram" checked>
+              <span class="toggle-dot"></span>
+              Telegram
+            </label>
+            <label class="toggle-opt">
+              <input type="radio" name="partner_contact" value="email">
+              <span class="toggle-dot"></span>
+              Email
+            </label>
+          </div>
+          <input class="form-input" type="text" placeholder="@username или адрес почты" style="margin-top: 14px;">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Кто вы</label>
+          <div class="category-pills">
+            <input type="radio" name="who" id="p1" class="pill-opt">
+            <label for="p1" class="pill-label">Дизайнер или архитектор</label>
+
+            <input type="radio" name="who" id="p2" class="pill-opt">
+            <label for="p2" class="pill-label">Строительная бригада или подрядчик</label>
+
+            <input type="radio" name="who" id="p3" class="pill-opt">
+            <label for="p3" class="pill-label">Поставщик мебели, материалов, декора</label>
+
+            <input type="radio" name="who" id="p4" class="pill-opt">
+            <label for="p4" class="pill-label">Фотограф или стилист</label>
+
+            <input type="radio" name="who" id="p5" class="pill-opt">
+            <label for="p5" class="pill-label">Агентство недвижимости или застройщик</label>
+
+            <input type="radio" name="who" id="p6" class="pill-opt">
+            <label for="p6" class="pill-label">Другое</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">О себе и своей работе</label>
+          <textarea class="form-textarea" placeholder="Коротко — чем занимаетесь, как видите сотрудничество"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Портфолио или сайт</label>
+          <input class="form-input" type="text" placeholder="Ссылка, если есть">
+        </div>
+
+        <button type="submit" class="form-submit">Отправить</button>
+        <p class="form-note">Мы читаем каждое обращение и вернёмся, если увидим совпадение.</p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="background: var(--dark); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06);">
+  <a href="Maisoneve.html" style="font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;">Maisoneve</a>
+  <p style="font-size: 11px; color: rgba(255,255,255,0.18);">© 2026 Maisoneve</p>
+</footer>
+
+<script>
+  function switchTab(tab, btn) {
+    // panels
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    // buttons
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

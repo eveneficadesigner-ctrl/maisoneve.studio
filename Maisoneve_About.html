@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О студии — Maisoneve</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --walnut: #3A2A1E; --travertine: #D9CCB4; --brass: #9C7D4A;
+    --linen: #C8B89A; --dark: #1C1C1C; --cream: #F5F0E8; --cream-mid: #EDE8DF;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--dark); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 72px; background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(58,42,30,0.08); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; letter-spacing: 0.12em; color: var(--dark); text-decoration: none; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(28,28,28,0.45); text-decoration: none; transition: color 0.25s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--dark); }
+
+  /* HERO — compact */
+  .hero { padding: 140px 48px 72px; background: var(--cream); }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--brass); margin-bottom: 20px; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 50px); font-weight: 300; color: var(--dark); line-height: 1.15; max-width: 640px; margin-bottom: 24px; }
+  .hero-intro { font-size: 14px; line-height: 1.85; color: rgba(28,28,28,0.55); max-width: 560px; }
+
+  /* FULL-WIDTH IMAGE BAND */
+  .image-band { height: 420px; background: var(--walnut); position: relative; overflow: hidden; }
+  .image-band-placeholder { width: 100%; height: 100%; background: linear-gradient(160deg, #3A2A1E 0%, #2a1f14 60%, #1C1C1C 100%); display: flex; align-items: center; justify-content: center; }
+  .image-band-placeholder span { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.12); }
+  .image-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* EVE — minimal */
+  .eve { display: grid; grid-template-columns: 380px 1fr; gap: 0; background: var(--dark); }
+  .eve-photo { background: linear-gradient(160deg, #3A2A1E 0%, #2a1f14 100%); min-height: 480px; position: relative; }
+  .eve-photo-placeholder { width: 100%; height: 100%; min-height: 480px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 100px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.05); }
+  .eve-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eve-content { padding: 64px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .eve-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--brass); margin-bottom: 24px; }
+  .eve-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 300; font-style: italic; color: var(--travertine); line-height: 1.45; margin-bottom: 28px; }
+  .eve-bio { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.5); margin-bottom: 32px; max-width: 440px; }
+  .eve-sig { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--linen); }
+
+  /* GEOGRAPHY */
+  .geo { padding: 88px 48px; background: var(--cream); }
+  .geo-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 48px; }
+  .geo-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 300; color: var(--dark); line-height: 1.15; flex-shrink: 0; }
+  .geo-text { font-size: 14px; color: rgba(28,28,28,0.5); line-height: 1.8; max-width: 420px; }
+  .geo-cities { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .geo-city { background: var(--cream-mid); padding: 40px 32px; position: relative; transition: background 0.3s; }
+  .geo-city:hover { background: #E8E1D6; }
+  .geo-city::before { content: ''; display: block; width: 20px; height: 1px; background: var(--brass); margin-bottom: 20px; }
+  .geo-city-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--dark); margin-bottom: 6px; }
+  .geo-city-sub { font-size: 12px; color: rgba(28,28,28,0.4); letter-spacing: 0.04em; }
+
+  /* GEO IMAGES */
+  .geo-images { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2px; }
+  .geo-img { height: 320px; overflow: hidden; position: relative; }
+  .geo-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.12); }
+  .geo-img:nth-child(1) .geo-img-placeholder { background: linear-gradient(160deg, #D9CCB4 0%, #C8B89A 100%); }
+  .geo-img:nth-child(2) .geo-img-placeholder { background: linear-gradient(160deg, #3A2A1E 0%, #1C1C1C 100%); }
+  .geo-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* TEAM */
+  .team { padding: 88px 48px; background: var(--cream-mid); }
+  .team-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 48px; }
+  .team-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 300; color: var(--dark); line-height: 1.15; flex-shrink: 0; }
+  .team-text { font-size: 14px; color: rgba(28,28,28,0.5); line-height: 1.8; max-width: 420px; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .team-card { background: var(--cream); padding: 36px 28px; display: flex; flex-direction: column; gap: 10px; }
+  .team-card-icon { width: 36px; height: 36px; border: 1px solid rgba(156,125,74,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brass); font-size: 14px; font-weight: 500; margin-bottom: 8px; flex-shrink: 0; }
+  .team-card-role { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--dark); line-height: 1.2; }
+  .team-card-desc { font-size: 12px; color: rgba(28,28,28,0.45); line-height: 1.7; }
+
+  /* TEAM PHOTOS */
+  .team-photos { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2px; margin-top: 2px; }
+  .team-photo { overflow: hidden; height: 360px; }
+  .team-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.12); }
+  .team-photo:nth-child(1) .team-photo-placeholder { background: linear-gradient(160deg, #1C1C1C 0%, #3A2A1E 100%); }
+  .team-photo:nth-child(2) .team-photo-placeholder { background: linear-gradient(160deg, #3A2A1E 0%, #9C7D4A 100%); }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* PHILOSOPHY */
+  .philosophy { padding: 88px 48px; background: var(--cream); }
+  .philosophy-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 300; color: var(--dark); line-height: 1.15; margin-bottom: 48px; }
+  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .pillar { background: var(--cream-mid); padding: 36px 28px; }
+  .pillar::before { content: ''; display: block; width: 24px; height: 1px; background: var(--brass); margin-bottom: 20px; }
+  .pillar-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--dark); margin-bottom: 12px; line-height: 1.2; }
+  .pillar-text { font-size: 13px; color: rgba(28,28,28,0.5); line-height: 1.75; }
+
+  /* PROCESS */
+  .process { padding: 0 48px 88px; background: var(--cream); }
+  .process-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 300; color: var(--dark); margin-bottom: 44px; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-top: 1px solid rgba(58,42,30,0.1); padding-top: 40px; }
+  .step-num { font-size: 10px; letter-spacing: 0.2em; color: var(--brass); margin-bottom: 14px; }
+  .step-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--dark); margin-bottom: 8px; }
+  .step-text { font-size: 13px; color: rgba(28,28,28,0.5); line-height: 1.7; }
+
+  /* CTA */
+  .cta { background: var(--walnut); padding: 96px 48px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 60px; }
+  .cta-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 300; font-style: italic; color: var(--travertine); line-height: 1.2; }
+  .cta-btn { display: inline-block; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 17px 48px; text-decoration: none; white-space: nowrap; transition: border-color 0.3s, background 0.3s; }
+  .cta-btn:hover { border-color: var(--linen); background: rgba(200,184,154,0.12); }
+
+  /* FOOTER */
+  footer { background: var(--dark); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-contacts { display: flex; gap: 36px; font-size: 12px; }
+  .footer-contacts a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.25s; }
+  .footer-contacts a:hover { color: var(--linen); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; } .nav-links { gap: 24px; }
+    .hero { padding: 120px 24px 56px; }
+    .image-band { height: 280px; }
+    .eve { grid-template-columns: 1fr; } .eve-photo { min-height: 340px; } .eve-photo-placeholder { min-height: 340px; } .eve-content { padding: 48px 24px; }
+    .geo { padding: 64px 24px; } .geo-header { flex-direction: column; align-items: flex-start; gap: 16px; } .geo-cities { grid-template-columns: 1fr 1fr; } .geo-images { grid-template-columns: 1fr; } .geo-img { height: 240px; }
+    .team { padding: 64px 24px; } .team-header { flex-direction: column; align-items: flex-start; gap: 16px; } .team-grid { grid-template-columns: 1fr 1fr; } .team-photos { grid-template-columns: 1fr; } .team-photo { height: 260px; }
+    .philosophy { padding: 64px 24px; } .pillars { grid-template-columns: 1fr 1fr; }
+    .process { padding: 0 24px 64px; } .steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .cta { grid-template-columns: 1fr; gap: 32px; padding: 64px 24px; text-align: center; justify-items: center; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; } .footer-contacts { flex-direction: column; gap: 10px; align-items: center; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .geo-cities { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="Maisoneve.html" class="nav-logo">Maisoneve</a>
+  <ul class="nav-links">
+    <li><a href="Maisoneve_Projects.html">Проекты</a></li>
+    <li><a href="Maisoneve_Services.html">Услуги</a></li>
+    <li><a href="Maisoneve_About.html" class="active">О студии</a></li>
+    <li><a href="Maisoneve_Contact.html">Связаться</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">О студии</p>
+  <h1 class="hero-title">Бутиковая студия интерьера с проектами в России и Европе</h1>
+  <p class="hero-intro">Maisoneve работает в подходе Parisian Contemporary Classic — натуральные материалы, вневременная палитра, функциональность без компромиссов. Мы ведём проекты от концепции до финальной расстановки.</p>
+</div>
+
+<!-- FULL-WIDTH STUDIO IMAGE -->
+<div class="image-band">
+  <!-- Replace with: <img src="images/studio-wide.jpg" alt="Maisoneve — рабочий процесс"> -->
+  <div class="image-band-placeholder"><span>Фото студии / рабочей обстановки</span></div>
+</div>
+
+<!-- EVE -->
+<div class="eve">
+  <div class="eve-photo">
+    <!-- Replace with: <img src="images/eve.jpg" alt="Eve — основатель Maisoneve"> -->
+    <div class="eve-photo-placeholder">E</div>
+  </div>
+  <div class="eve-content">
+    <p class="eve-label">Основатель</p>
+    <p class="eve-quote">«Дом должен знать, как вы живёте. Наша работа — услышать это раньше, чем возьмёмся за первый чертёж.»</p>
+    <p class="eve-bio">За каждым проектом стоит ясное понимание того, как клиент живёт, работает и отдыхает. Я не начинаю с картинки — я начинаю с разговора. И именно из этого разговора рождается интерьер, который служит человеку, а не наоборот.</p>
+    <p class="eve-sig">Eve — основатель Maisoneve</p>
+  </div>
+</div>
+
+<!-- GEOGRAPHY -->
+<section class="geo">
+  <div class="geo-header">
+    <h2 class="geo-title">География проектов</h2>
+    <p class="geo-text">Мы работаем там, где нужны нашему клиенту — в России и в городах Европы. Каждый проект сопровождается лично, независимо от расстояния.</p>
+  </div>
+  <div class="geo-cities">
+    <div class="geo-city">
+      <p class="geo-city-name">Санкт-Петербург</p>
+      <p class="geo-city-sub">Россия</p>
+    </div>
+    <div class="geo-city">
+      <p class="geo-city-name">Москва</p>
+      <p class="geo-city-sub">Россия</p>
+    </div>
+    <div class="geo-city">
+      <p class="geo-city-name">Париж</p>
+      <p class="geo-city-sub">Франция</p>
+    </div>
+    <div class="geo-city">
+      <p class="geo-city-name">Boulogne-Billancourt</p>
+      <p class="geo-city-sub">Франция</p>
+    </div>
+  </div>
+  <div class="geo-images">
+    <div class="geo-img">
+      <!-- Replace with: <img src="images/geo-europe.jpg" alt="Проект в Европе"> -->
+      <div class="geo-img-placeholder"><span>Фото — европейский проект</span></div>
+    </div>
+    <div class="geo-img">
+      <!-- Replace with: <img src="images/geo-russia.jpg" alt="Проект в России"> -->
+      <div class="geo-img-placeholder"><span>Фото — российский проект</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="team-header">
+    <h2 class="team-title">Команда</h2>
+    <p class="team-text">В каждом проекте задействована команда профильных специалистов. Мы не передаём работу на сторону — у нас свои проверенные люди на каждом этапе.</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-card-icon">A</div>
+      <p class="team-card-role">Архитекторы</p>
+      <p class="team-card-desc">Планировочные решения, перепланировки, согласования — вся архитектурная часть проекта.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-card-icon">D</div>
+      <p class="team-card-role">Дизайнеры и декораторы</p>
+      <p class="team-card-desc">Концепция, палитра, подбор материалов, мебели и освещения — визуальный образ пространства.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-card-icon">V</div>
+      <p class="team-card-role">3D-визуализаторы</p>
+      <p class="team-card-desc">Фотореалистичная визуализация, чтобы вы увидели результат до начала ремонта.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-card-icon">I</div>
+      <p class="team-card-role">Инженеры</p>
+      <p class="team-card-desc">Электрика, вентиляция, сантехника, кондиционирование — все инженерные системы под контролем.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-card-icon">S</div>
+      <p class="team-card-role">Строительные бригады</p>
+      <p class="team-card-desc">Свои подрядчики по ремонту и отделке. Контроль качества на каждом этапе реализации.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-card-icon">C</div>
+      <p class="team-card-role">Комплектаторы и логистика</p>
+      <p class="team-card-desc">Закупка, доставка и приёмка всех материалов, мебели и декора — точно и в срок.</p>
+    </div>
+  </div>
+
+  <div class="team-photos">
+    <div class="team-photo">
+      <!-- Replace with: <img src="images/team-work-1.jpg" alt="Команда Maisoneve"> -->
+      <div class="team-photo-placeholder"><span>Фото — команда за работой</span></div>
+    </div>
+    <div class="team-photo">
+      <!-- Replace with: <img src="images/team-work-2.jpg" alt="Рабочий процесс"> -->
+      <div class="team-photo-placeholder"><span>Фото — рабочий процесс</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <h2 class="philosophy-title">Принципы работы</h2>
+  <div class="pillars">
+    <div class="pillar">
+      <h3 class="pillar-name">Вневременность</h3>
+      <p class="pillar-text">Интерьеры, которые не потребуют переосмысления через три года. Классические пропорции, натуральные материалы, сдержанная палитра.</p>
+    </div>
+    <div class="pillar">
+      <h3 class="pillar-name">Функциональность</h3>
+      <p class="pillar-text">Каждое решение проверяется на то, как оно работает в жизни, а не только на визуализации.</p>
+    </div>
+    <div class="pillar">
+      <h3 class="pillar-name">Внимание к деталям</h3>
+      <p class="pillar-text">Детали отличают хороший интерьер от выдающегося. Мы не упрощаем там, где важна точность.</p>
+    </div>
+    <div class="pillar">
+      <h3 class="pillar-name">Честный подход</h3>
+      <p class="pillar-text">Мы не берём проекты, которые не можем сделать хорошо, и не предлагаем решения, которые не подходят клиенту.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <h2 class="process-title">Как мы работаем</h2>
+  <div class="steps">
+    <div>
+      <p class="step-num">01</p>
+      <h3 class="step-name">Знакомство</h3>
+      <p class="step-text">Разбираемся в задаче, в том, как вы живёте и что для вас важно.</p>
+    </div>
+    <div>
+      <p class="step-num">02</p>
+      <h3 class="step-name">Концепция</h3>
+      <p class="step-text">Формируем образ будущего пространства — палитру, материалы, логику.</p>
+    </div>
+    <div>
+      <p class="step-num">03</p>
+      <h3 class="step-name">Проектирование</h3>
+      <p class="step-text">Переводим образ в чертежи и решения. Каждый элемент обоснован.</p>
+    </div>
+    <div>
+      <p class="step-num">04</p>
+      <h3 class="step-name">Реализация</h3>
+      <p class="step-text">Сопровождаем проект до финала — от выбора подрядчиков до съёмки.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <p class="cta-text">Есть проект? Расскажите нам о нём.</p>
+  <a href="Maisoneve_Contact.html" class="cta-btn">Рассказать о проекте</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="Maisoneve.html" class="footer-logo">Maisoneve</a>
+  <div class="footer-contacts">
+    <a href="https://maisoneve.studio">maisoneve.studio</a>
+    <a href="https://t.me/maisoneve">Telegram · @maisoneve</a>
+    <a href="https://instagram.com/maisoneve.studio">Instagram · @maisoneve.studio</a>
+    <a href="mailto:hello@maisoneve.studio">hello@maisoneve.studio</a>
+  </div>
+  <p class="footer-copy">© 2026 Maisoneve</p>
+</footer>
+
+</body>
+</html>
