@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Связаться — Maisoneve</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#F5F0E8">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -347,6 +353,34 @@
     font-style: italic;
   }
 
+  /* ── FORM STATUS ── */
+  .form-status {
+    display: none;
+    margin: 20px 0 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .form-status:not(:empty) { display: block; }
+  .form-success {
+    background: rgba(156,125,74,0.12);
+    border-left: 2px solid var(--brass);
+    color: var(--walnut);
+  }
+  .form-error {
+    background: rgba(130,50,40,0.08);
+    border-left: 2px solid #8a463c;
+    color: #6f342d;
+  }
+  .form-honeypot {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
     .page-wrap { grid-template-columns: 1fr; }
@@ -370,9 +404,9 @@
 
 <!-- NAV -->
 <nav>
-  <a href="Maisoneve.html" class="nav-logo">Maisoneve</a>
+  <a href="index.html" class="nav-logo">Maisoneve</a>
   <ul class="nav-links">
-    <li><a href="Maisoneve_Projects.html">Проекты</a></li>
+    <li><a href="index.html#projects">Проекты</a></li>
     <li><a href="Maisoneve_Services.html">Услуги</a></li>
     <li><a href="Maisoneve_About.html">О студии</a></li>
     <li><a href="Maisoneve_Contact.html" class="active">Связаться</a></li>
@@ -386,7 +420,7 @@
     <div class="left-top">
       <p class="left-eyebrow">Maisoneve · Связаться</p>
       <h1 class="left-title">Узнайте,<br>подходим ли мы<br><em>друг другу</em></h1>
-      <p class="left-sub">Расскажите о вашем проекте или о себе — мы читаем каждое обращение и вернёмся, если увидим совпадение.</p>
+      <p class="left-sub">Расскажите о проекте или предложении о сотрудничестве. Мы внимательно рассмотрим обращение и ответим по указанной почте.</p>
 
       <div class="tab-switcher">
         <button class="tab-btn active" onclick="switchTab('client', this)">Клиент</button>
@@ -396,8 +430,6 @@
 
     <div class="left-bottom">
       <div class="left-contacts">
-        <a href="https://t.me/maisoneve">Telegram · @maisoneve</a>
-        <a href="https://instagram.com/maisoneve.studio">Instagram · @maisoneve.studio</a>
         <a href="mailto:hello@maisoneve.studio">hello@maisoneve.studio</a>
       </div>
     </div>
@@ -411,51 +443,56 @@
       <h2 class="form-title">Расскажите о проекте</h2>
       <p class="form-sub">Заполните форму — и мы свяжемся с вами, чтобы обсудить детали.</p>
 
-      <form>
-        <div class="form-group">
-          <label class="form-label">Ваше имя</label>
-          <input class="form-input" type="text" placeholder="Как вас зовут">
+      <div class="form-status form-success" data-form-success aria-live="polite">Спасибо. Заявка отправлена — мы ответим в течение одного рабочего дня.</div>
+      <div class="form-status form-error" data-form-error aria-live="assertive"></div>
+
+      <form id="client-form" class="js-formspree-form" action="https://formspree.io/f/mykqwdvl" method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="_subject" value="Новая заявка на проект — Maisoneve">
+        <input type="hidden" name="request_type" value="Клиентская заявка">
+
+        <div class="form-honeypot" aria-hidden="true">
+          <label>Не заполняйте это поле
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </label>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Способ связи</label>
-          <div class="contact-toggle">
-            <label class="toggle-opt">
-              <input type="radio" name="contact_type" value="telegram" checked>
-              <span class="toggle-dot"></span>
-              Telegram
-            </label>
-            <label class="toggle-opt">
-              <input type="radio" name="contact_type" value="email">
-              <span class="toggle-dot"></span>
-              Email
-            </label>
-          </div>
-          <input class="form-input" type="text" placeholder="@username или адрес почты" style="margin-top: 14px;">
+          <label class="form-label" for="client-name">Ваше имя</label>
+          <input class="form-input" id="client-name" type="text" name="name" placeholder="Как вас зовут" autocomplete="name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-email">Email</label>
+          <input class="form-input" id="client-email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
         </div>
 
         <div class="form-group">
           <label class="form-label">Что вас интересует</label>
           <div class="service-checks">
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Консультация</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Концепция</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Планировочное решение</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Дизайн-проект</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Интерьер под ключ</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Интерьер для инвестиций</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Home Staging</label>
-            <label class="check-opt"><input type="checkbox"><span class="check-box"></span>Пока не знаю</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Консультация"><span class="check-box"></span>Консультация</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Концепция"><span class="check-box"></span>Концепция</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Планировочное решение"><span class="check-box"></span>Планировочное решение</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Дизайн-проект"><span class="check-box"></span>Дизайн-проект</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Интерьер под ключ"><span class="check-box"></span>Интерьер под ключ</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Интерьер для инвестиций"><span class="check-box"></span>Интерьер для инвестиций</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Home Staging"><span class="check-box"></span>Home Staging</label>
+            <label class="check-opt"><input type="checkbox" name="services" value="Пока не знаю"><span class="check-box"></span>Пока не знаю</label>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Площадь объекта</label>
-          <input class="form-input" type="text" placeholder="Примерно, м²">
+          <label class="form-label" for="client-city">Город</label>
+          <input class="form-input" id="client-city" type="text" name="city" placeholder="Где находится объект">
         </div>
 
         <div class="form-group">
-          <label class="form-label">Расскажите о проекте</label>
-          <textarea class="form-textarea" placeholder="Что важно для вас, какой результат ожидаете, есть ли сроки — всё, что считаете нужным"></textarea>
+          <label class="form-label" for="client-area">Площадь объекта</label>
+          <input class="form-input" id="client-area" type="text" name="area" placeholder="Примерно, м²" inputmode="decimal">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-message">Расскажите о проекте</label>
+          <textarea class="form-textarea" id="client-message" name="message" placeholder="Что важно для вас, какой результат ожидаете, есть ли сроки — всё, что считаете нужным" required></textarea>
         </div>
 
         <button type="submit" class="form-submit">Рассказать о проекте</button>
@@ -468,64 +505,64 @@
       <h2 class="form-title">Работать вместе</h2>
       <p class="form-sub">Maisoneve открыта к партнёрству с теми, кто разделяет наш стандарт — внимательность, качество, уважение к деталям.</p>
 
-      <form>
-        <div class="form-group">
-          <label class="form-label">Ваше имя</label>
-          <input class="form-input" type="text" placeholder="Как вас зовут">
+      <div class="form-status form-success" data-form-success aria-live="polite">Спасибо. Предложение отправлено — мы внимательно его рассмотрим и ответим по электронной почте.</div>
+      <div class="form-status form-error" data-form-error aria-live="assertive"></div>
+
+      <form id="partner-form" class="js-formspree-form" action="https://formspree.io/f/mykqwdvl" method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="_subject" value="Новое предложение о сотрудничестве — Maisoneve">
+        <input type="hidden" name="request_type" value="Партнёрское предложение">
+
+        <div class="form-honeypot" aria-hidden="true">
+          <label>Не заполняйте это поле
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </label>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Способ связи</label>
-          <div class="contact-toggle">
-            <label class="toggle-opt">
-              <input type="radio" name="partner_contact" value="telegram" checked>
-              <span class="toggle-dot"></span>
-              Telegram
-            </label>
-            <label class="toggle-opt">
-              <input type="radio" name="partner_contact" value="email">
-              <span class="toggle-dot"></span>
-              Email
-            </label>
-          </div>
-          <input class="form-input" type="text" placeholder="@username или адрес почты" style="margin-top: 14px;">
+          <label class="form-label" for="partner-name">Ваше имя</label>
+          <input class="form-input" id="partner-name" type="text" name="name" placeholder="Как вас зовут" autocomplete="name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="partner-email">Email</label>
+          <input class="form-input" id="partner-email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
         </div>
 
         <div class="form-group">
           <label class="form-label">Кто вы</label>
           <div class="category-pills">
-            <input type="radio" name="who" id="p1" class="pill-opt">
+            <input type="radio" name="who" value="Дизайнер или архитектор" id="p1" class="pill-opt" required>
             <label for="p1" class="pill-label">Дизайнер или архитектор</label>
 
-            <input type="radio" name="who" id="p2" class="pill-opt">
+            <input type="radio" name="who" value="Строительная бригада или подрядчик" id="p2" class="pill-opt">
             <label for="p2" class="pill-label">Строительная бригада или подрядчик</label>
 
-            <input type="radio" name="who" id="p3" class="pill-opt">
+            <input type="radio" name="who" value="Поставщик мебели, материалов, декора" id="p3" class="pill-opt">
             <label for="p3" class="pill-label">Поставщик мебели, материалов, декора</label>
 
-            <input type="radio" name="who" id="p4" class="pill-opt">
+            <input type="radio" name="who" value="Фотограф или стилист" id="p4" class="pill-opt">
             <label for="p4" class="pill-label">Фотограф или стилист</label>
 
-            <input type="radio" name="who" id="p5" class="pill-opt">
+            <input type="radio" name="who" value="Агентство недвижимости или застройщик" id="p5" class="pill-opt">
             <label for="p5" class="pill-label">Агентство недвижимости или застройщик</label>
 
-            <input type="radio" name="who" id="p6" class="pill-opt">
+            <input type="radio" name="who" value="Другое" id="p6" class="pill-opt">
             <label for="p6" class="pill-label">Другое</label>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">О себе и своей работе</label>
-          <textarea class="form-textarea" placeholder="Коротко — чем занимаетесь, как видите сотрудничество"></textarea>
+          <label class="form-label" for="partner-message">О себе и своей работе</label>
+          <textarea class="form-textarea" id="partner-message" name="message" placeholder="Коротко — чем занимаетесь, как видите сотрудничество" required></textarea>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Портфолио или сайт</label>
-          <input class="form-input" type="text" placeholder="Ссылка, если есть">
+          <label class="form-label" for="partner-portfolio">Портфолио или сайт</label>
+          <input class="form-input" id="partner-portfolio" type="url" name="portfolio" placeholder="https://...">
         </div>
 
         <button type="submit" class="form-submit">Отправить</button>
-        <p class="form-note">Мы читаем каждое обращение и вернёмся, если увидим совпадение.</p>
+        <p class="form-note">Мы внимательно рассматриваем каждое предложение и отвечаем по указанной почте.</p>
       </form>
     </div>
 
@@ -534,19 +571,68 @@
 
 <!-- FOOTER -->
 <footer style="background: var(--dark); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06);">
-  <a href="Maisoneve.html" style="font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;">Maisoneve</a>
+  <a href="index.html" style="font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;">Maisoneve</a>
   <p style="font-size: 11px; color: rgba(255,255,255,0.18);">© 2026 Maisoneve</p>
 </footer>
 
 <script>
   function switchTab(tab, btn) {
-    // panels
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
-    // buttons
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(button => button.classList.remove('active'));
     btn.classList.add('active');
   }
+
+  document.querySelectorAll('.js-formspree-form').forEach(form => {
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const panel = form.closest('.tab-panel');
+      const successMessage = panel.querySelector('[data-form-success]');
+      const errorMessage = panel.querySelector('[data-form-error]');
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      errorMessage.textContent = '';
+      submitButton.disabled = true;
+      submitButton.textContent = 'Отправляем…';
+      form.setAttribute('aria-busy', 'true');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          const details = Array.isArray(data.errors)
+            ? data.errors.map(error => error.message).join(' ')
+            : '';
+          throw new Error(details || 'Не удалось отправить форму.');
+        }
+
+        form.reset();
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (error) {
+        errorMessage.textContent = `${error.message} Попробуйте ещё раз или напишите на hello@maisoneve.studio.`;
+        errorMessage.style.display = 'block';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+        form.removeAttribute('aria-busy');
+      }
+    });
+  });
 </script>
 
 </body>
