@@ -116,9 +116,146 @@ footer { background: var(--bg-deep); color: rgba(245, 241, 234, 0.4); text-align
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+
+/* ── MOBILE MENU ── */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  z-index: 1202;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-menu-toggle.is-dark { color: #1C1C1C; }
+.mobile-menu-toggle span,
+.mobile-menu-toggle::before,
+.mobile-menu-toggle::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  transition: transform .32s ease, opacity .22s ease, top .32s ease;
+}
+.mobile-menu-toggle::before { top: 14px; }
+.mobile-menu-toggle span { top: 21px; }
+.mobile-menu-toggle::after { top: 28px; }
+body.mobile-menu-open .mobile-menu-toggle { color: #F5F0E8; }
+body.mobile-menu-open .mobile-menu-toggle::before { top: 21px; transform: rotate(45deg); }
+body.mobile-menu-open .mobile-menu-toggle span { opacity: 0; }
+body.mobile-menu-open .mobile-menu-toggle::after { top: 21px; transform: rotate(-45deg); }
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: max(112px, calc(env(safe-area-inset-top) + 88px)) 30px max(34px, calc(env(safe-area-inset-bottom) + 24px));
+  background: #1C1C1C;
+  color: #F5F0E8;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity .32s ease, visibility .32s ease, transform .32s ease;
+}
+body.mobile-menu-open .mobile-menu-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.mobile-menu-label {
+  margin: 0 0 28px;
+  font: 400 10px/1.4 'Inter', sans-serif;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: #9C7D4A;
+}
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.mobile-menu-links a {
+  color: #F5F0E8;
+  text-decoration: none;
+  font: 300 clamp(34px, 10vw, 48px)/1.05 'Cormorant Garamond', serif;
+  letter-spacing: .01em;
+}
+.mobile-menu-links a.mobile-menu-faq {
+  margin-top: 8px;
+  font: 400 11px/1.4 'Inter', sans-serif;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #C8B89A;
+}
+.mobile-menu-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(217,204,180,.18);
+}
+.mobile-menu-bottom a {
+  width: fit-content;
+  color: rgba(245,240,232,.62);
+  text-decoration: none;
+  font: 300 12px/1.5 'Inter', sans-serif;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 700px) {
+  .mobile-menu-toggle { display: flex; }
+  body > nav .nav-links { display: none !important; }
+  body > nav > div { display: none !important; }
+  body > header > nav { display: none !important; }
+  body.mobile-menu-open { overflow: hidden !important; }
+  body.mobile-menu-open > nav,
+  body.mobile-menu-open > header { mix-blend-mode: normal !important; }
+}
+
+@media (min-width: 701px) {
+  .mobile-menu-overlay { display: none !important; }
+}
+
 </style>
 </head>
 <body>
+
+<button class="mobile-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+  <span aria-hidden="true"></span>
+</button>
+<div class="mobile-menu-overlay" id="mobile-menu" aria-hidden="true">
+  <div>
+    <p class="mobile-menu-label">Навигация</p>
+    <div class="mobile-menu-links">
+      <a href="index.html#projects">Проекты</a>
+      <a href="Maisoneve_Services.html">Услуги</a>
+      <a href="Maisoneve_About.html">О студии</a>
+      <a href="Maisoneve_Contact.html">Связаться</a>
+      <a class="mobile-menu-faq" href="Maisoneve_Services.html#faq">Частые вопросы →</a>
+    </div>
+  </div>
+  <div class="mobile-menu-bottom">
+    <a href="mailto:hello@maisoneve.studio">hello@maisoneve.studio</a>
+    <a href="https://maisoneve.studio">maisoneve.studio</a>
+  </div>
+</div>
+
 <nav>
   <a href="index.html" class="brand" style="text-decoration:none; color:inherit;">MAISONEVE</a>
   <div style="display:flex; gap:36px;">
@@ -266,5 +403,31 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
 reveals.forEach(r => io.observe(r));
 </script>
+
+<script>
+(function () {
+  const body = document.body;
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (!toggle || !menu) return;
+
+  const setOpen = (open) => {
+    body.classList.toggle('mobile-menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    menu.setAttribute('aria-hidden', String(!open));
+  };
+
+  toggle.addEventListener('click', () => setOpen(!body.classList.contains('mobile-menu-open')));
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 700) setOpen(false);
+  });
+})();
+</script>
+
 </body>
 </html>
