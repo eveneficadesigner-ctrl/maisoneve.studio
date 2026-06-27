@@ -75,6 +75,42 @@
     padding: 100px 60px 90px;
     position: relative;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
+    gap: 72px;
+    align-items: center;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: 8% 2% 2% 10%;
+    border: 1px solid rgba(217,204,180,0.18);
+  }
+
+  .hero-visual img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: 570px;
+    object-fit: contain;
+    filter: sepia(0.12) saturate(0.72) contrast(0.94);
+    mix-blend-mode: screen;
+    opacity: 0.9;
   }
 
   .hero::before {
@@ -606,7 +642,9 @@
       padding-left: 24px;
       padding-right: 24px;
     }
-    .hero { padding: 72px 24px 64px; }
+    .hero { padding: 72px 24px 64px; grid-template-columns: 1fr; gap: 44px; }
+    .hero-visual { min-height: 320px; }
+    .hero-visual img { max-height: 420px; }
     .hero-meta { flex-wrap: wrap; gap: 24px; }
     .deliverables-grid { grid-template-columns: 1fr; }
     .plans-container { grid-template-columns: 1fr; }
@@ -643,22 +681,27 @@
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Услуга — Планировочное решение</p>
-  <h1>Пространство, которое <em>работает</em> именно для вас</h1>
-  <p class="hero-desc">Мы изучаем ваш образ жизни, привычки и сценарии — и предлагаем до трёх вариантов планировки, каждый из которых решает задачу по-своему.</p>
-  <div class="hero-meta">
-    <div class="hero-meta-item">
-      <div class="label">Вариантов</div>
-      <div class="value">до 3</div>
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Услуга — Планировочное решение</p>
+    <h1>Пространство, которое <em>работает</em> именно для вас</h1>
+    <p class="hero-desc">Мы изучаем ваш образ жизни, привычки и сценарии — и предлагаем до трёх вариантов планировки, каждый из которых решает задачу по-своему.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Вариантов</div>
+        <div class="value">до 3</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Формат</div>
+        <div class="value">Онлайн</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Результат</div>
+        <div class="value">PDF А3</div>
+      </div>
     </div>
-    <div class="hero-meta-item">
-      <div class="label">Формат</div>
-      <div class="value">Онлайн</div>
-    </div>
-    <div class="hero-meta-item">
-      <div class="label">Результат</div>
-      <div class="value">PDF А3</div>
-    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <img src="images/planning-hero.jpg" alt="">
   </div>
 </section>
 
@@ -679,7 +722,7 @@
     <div class="deliverable-card">
       <div class="deliverable-num">02</div>
       <div class="deliverable-title">Чистовая планировка в PDF, формат А3</div>
-      <p class="deliverable-desc">Финальный вариант в виде технического чертежа с обозначением зон, габаритов и расстановки мебели. Готовый документ, который вы передаёте строителям или используете для дальнейшего проектирования.</p>
+      <p class="deliverable-desc">Финальный вариант в виде технического чертежа с обозначением зон, габаритов и расстановки мебели. Готовый документ, который можно передать строительной команде или использовать для дальнейшего проектирования.</p>
     </div>
   </div>
 </section>
@@ -743,7 +786,7 @@
     <div class="process-step">
       <div class="step-num">04</div>
       <div class="step-title">Финальный документ</div>
-      <p class="step-desc">Чистовая планировка в PDF, формат А3, готова к передаче строителям или к следующему этапу проекта.</p>
+      <p class="step-desc">Чистовая планировка в PDF, формат А3, готова к передаче строительной команде или к следующему этапу проекта.</p>
     </div>
   </div>
 </section>
@@ -814,7 +857,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Maisoneve</div>
+  <a href="index.html" class="footer-logo" style="text-decoration:none;">Maisoneve</a>
   <div class="footer-contacts">
     maisoneve.studio<br>
     hello@maisoneve.studio

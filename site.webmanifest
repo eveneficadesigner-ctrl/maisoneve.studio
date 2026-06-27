@@ -1,6 +1,10 @@
 {
   "name": "Maisoneve",
   "short_name": "Maisoneve",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F5F0E8",
+  "theme_color": "#F5F0E8",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
@@ -12,8 +16,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#F5F0E8",
-  "background_color": "#F5F0E8",
-  "display": "standalone"
+  ]
 }
