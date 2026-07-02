@@ -1,3 +1,6 @@
+<head>
+<link rel="canonical" href="https://maisoneve.studio/">
+<meta property="og:url" content="https://maisoneve.studio/">
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -1259,5 +1262,14 @@ body.mobile-menu-open .mobile-menu-overlay {
 })();
 </script>
 
+<script>
+  if (window.location.pathname === '/index.html') {
+    window.history.replaceState(
+      null,
+      '',
+      '/' + window.location.search + window.location.hash
+    );
+  }
+</script>
 </body>
 </html>
