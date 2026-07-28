@@ -81,3 +81,56 @@ body.lightbox-open{overflow:hidden}
   .gallery-zoom img{width:100%;height:auto;max-height:68vh;object-fit:contain}
   .lightbox-caption{display:none}
 }
+
+
+/* Project 01 — final matrix fill: compact, even, no internal white gaps */
+.portfolio-detail-grid{
+  margin-left:48px;
+  margin-right:48px;
+  margin-top:8px;
+  margin-bottom:96px;
+  width:auto;
+  max-width:none;
+}
+.detail-grid{width:100%;gap:18px}
+.detail-grid--feature{
+  grid-template-columns:minmax(0,31fr) minmax(0,69fr);
+  height:390px;
+}
+.detail-grid--three{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  height:245px;
+}
+.detail-grid--two{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  height:320px;
+}
+.detail-cell{
+  width:100%;height:100%;overflow:hidden;background:#e9e2d8;
+}
+.gallery-zoom{width:100%;height:100%;overflow:hidden}
+.gallery-zoom img{
+  width:100%;height:100%;max-width:none;max-height:none;
+  object-fit:cover;object-position:center;
+  image-rendering:auto;
+}
+/* The full, uncropped original remains available in the lightbox. */
+.image-lightbox .lightbox-image{
+  width:auto;height:auto;max-width:100%;max-height:calc(88vh - 34px);object-fit:contain;
+}
+@media(max-width:1100px){
+  .portfolio-detail-grid{margin-left:32px;margin-right:32px}
+  .detail-grid--feature{height:330px}
+  .detail-grid--three{height:205px}
+  .detail-grid--two{height:270px}
+}
+@media(max-width:900px){
+  .portfolio-detail-grid{margin-left:24px;margin-right:24px}
+}
+@media(max-width:620px){
+  .portfolio-detail-grid{margin-left:16px;margin-right:16px}
+  .detail-grid--feature,.detail-grid--three,.detail-grid--two{height:auto;grid-template-columns:1fr}
+  .detail-cell{height:auto;background:transparent}
+  .gallery-zoom{height:auto}
+  .gallery-zoom img{width:100%;height:auto;max-height:none;object-fit:contain}
+}
