@@ -15,10 +15,10 @@ footer{padding:38px 48px;background:#111;color:#fff;display:grid;grid-template-c
 
 /* Project 01 — compact matrix gallery + lightbox */
 .portfolio-detail-grid{
-  width:100%;
-  max-width:1520px;
-  margin:8px auto 96px;
-  padding:0 48px;
+  width:auto;
+  max-width:none;
+  margin:8px 48px 96px;
+  padding:0;
   display:flex;
   flex-direction:column;
   gap:18px;
@@ -62,7 +62,7 @@ body.lightbox-open{overflow:hidden}
 .lightbox-prev{left:22px}.lightbox-next{right:22px}
 
 @media(max-width:900px){
-  .portfolio-detail-grid{width:100%;max-width:none;padding:0 24px;margin-bottom:72px;gap:14px}
+  .portfolio-detail-grid{width:auto;max-width:none;margin:0 24px 72px;padding:0;gap:14px}
   .detail-grid{gap:14px}
   .detail-grid--feature{height:260px}
   .detail-grid--three{height:175px}
@@ -73,7 +73,7 @@ body.lightbox-open{overflow:hidden}
   .lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-close{top:12px;right:12px}
 }
 @media(max-width:620px){
-  .portfolio-detail-grid{width:100%;padding:0 16px;gap:12px}
+  .portfolio-detail-grid{width:auto;margin-left:16px;margin-right:16px;padding:0;gap:12px}
   .detail-grid{gap:12px;height:auto}
   .detail-grid--feature,.detail-grid--three,.detail-grid--two{grid-template-columns:1fr}
   .detail-cell{height:auto;max-height:none}
