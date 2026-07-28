@@ -13,30 +13,32 @@ footer{padding:38px 48px;background:#111;color:#fff;display:grid;grid-template-c
 @media(max-width:900px){body > nav{padding:0 24px}.nav-links{display:none}.mobile-toggle{display:block}.page-hero{padding:130px 24px 52px}.portfolio-grid{padding:0 24px 80px;grid-template-columns:1fr;gap:56px}.project-media,.project-media.wide{aspect-ratio:4/3}.project-head{padding:48px 24px 44px;grid-template-columns:1fr;gap:36px}.project-hero-image{min-height:450px;height:65vh}.project-hero-image.is-portrait{height:auto;min-height:0;padding:0 24px;background:var(--cream2)}.project-hero-image.is-portrait img{width:100%;height:auto;max-height:none;object-fit:contain}.gallery{padding:0 24px 80px;display:block}.gallery figure,.gallery figure.full,.gallery figure.portrait,.gallery figure.offset{margin-bottom:22px}.project-nav{margin-bottom:75px;padding:32px 24px 0}.cta{padding:70px 24px}footer{padding:32px 24px;grid-template-columns:1fr}.footer-links{flex-wrap:wrap}}
 @media(max-width:520px){.page-title{font-size:50px}.project-title{font-size:48px}.project-hero-image{min-height:390px;height:58vh}.project-hero-image.is-portrait{height:auto;min-height:0}.project-caption{grid-template-columns:38px 1fr}.project-name{font-size:30px}.project-nav{flex-direction:column}.project-nav .next{text-align:left;margin-left:0}}
 
-
-/* Project 01 — structured portfolio grid + lightbox */
+/* Project 01 — compact matrix gallery + lightbox */
 .portfolio-detail-grid{
-  width:min(1180px,calc(100% - 96px));
-  margin:10px auto 118px;
+  width:min(980px,calc(100% - 96px));
+  margin:8px auto 96px;
   display:flex;
   flex-direction:column;
-  gap:24px;
+  gap:18px;
 }
-.detail-grid{display:grid;gap:24px;align-items:start}
-.detail-grid--feature{grid-template-columns:minmax(0,3fr) minmax(0,5fr);align-items:stretch}
-.detail-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.detail-grid--two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.detail-cell{margin:0;min-width:0;background:transparent}
-.gallery-zoom{
-  display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;text-align:inherit;
-}
+.detail-grid{display:grid;gap:18px;align-items:stretch}
+/* Reference matrix: narrow portrait + larger landscape */
+.detail-grid--feature{grid-template-columns:0.72fr 1.55fr;height:310px}
+/* Three equal compact cells */
+.detail-grid--three{grid-template-columns:repeat(3,minmax(0,1fr));height:210px}
+/* Remaining images: calm two-column rows */
+.detail-grid--two{grid-template-columns:repeat(2,minmax(0,1fr));height:285px}
+.detail-cell{margin:0;min-width:0;min-height:0;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.gallery-zoom{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
 .gallery-zoom img{
-  display:block;width:100%;height:auto;object-fit:contain;background:var(--cream2);
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:transparent;
   transition:opacity .25s ease;
 }
-.gallery-zoom:hover img{opacity:.92}
-/* Portrait 08 and landscape 01 naturally align at the 3:5 column ratio; no cropping or forced height. */
-.detail-grid--feature img{width:100%;height:auto;object-fit:contain}
+.gallery-zoom:hover img{opacity:.9}
 
 /* Image viewer */
 body.lightbox-open{overflow:hidden}
@@ -46,37 +48,32 @@ body.lightbox-open{overflow:hidden}
   opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease;
 }
 .image-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto}
-.lightbox-stage{
-  width:min(88vw,1500px);height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-}
+.lightbox-stage{width:min(88vw,1500px);height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .lightbox-image{display:block;max-width:100%;max-height:calc(88vh - 34px);width:auto;height:auto;object-fit:contain;box-shadow:0 12px 42px rgba(0,0,0,.25)}
 .lightbox-caption{min-height:18px;color:rgba(255,255,255,.62);font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-align:center}
-.lightbox-close,.lightbox-arrow{
-  position:absolute;border:0;background:rgba(255,255,255,.04);color:#fff;cursor:pointer;font-family:'Inter',sans-serif;
-  transition:background .2s ease,color .2s ease;
-}
+.lightbox-close,.lightbox-arrow{position:absolute;border:0;background:rgba(255,255,255,.04);color:#fff;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s ease,color .2s ease}
 .lightbox-close:hover,.lightbox-arrow:hover{background:rgba(255,255,255,.12)}
 .lightbox-close{top:22px;right:28px;width:44px;height:44px;font-size:30px;font-weight:300;line-height:1}
 .lightbox-arrow{top:50%;transform:translateY(-50%);width:52px;height:70px;font-size:46px;font-weight:300;line-height:1}
 .lightbox-prev{left:22px}.lightbox-next{right:22px}
 
 @media(max-width:900px){
-  .portfolio-detail-grid{width:calc(100% - 48px);margin-top:0;margin-bottom:80px;gap:16px}
-  .detail-grid{gap:16px}
-  .detail-grid--feature{grid-template-columns:minmax(0,3fr) minmax(0,5fr)}
-  .detail-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .detail-grid--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portfolio-detail-grid{width:calc(100% - 48px);margin-bottom:72px;gap:14px}
+  .detail-grid{gap:14px}
+  .detail-grid--feature{height:260px}
+  .detail-grid--three{height:175px}
+  .detail-grid--two{height:235px}
   .lightbox-stage{width:92vw;height:84vh}
   .lightbox-image{max-height:calc(84vh - 30px)}
   .lightbox-arrow{width:42px;height:58px;font-size:38px;background:rgba(0,0,0,.25)}
-  .lightbox-prev{left:8px}.lightbox-next{right:8px}
-  .lightbox-close{top:12px;right:12px}
+  .lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-close{top:12px;right:12px}
 }
 @media(max-width:620px){
   .portfolio-detail-grid{width:calc(100% - 32px);gap:12px}
-  .detail-grid{gap:12px}
+  .detail-grid{gap:12px;height:auto}
   .detail-grid--feature,.detail-grid--three,.detail-grid--two{grid-template-columns:1fr}
-  .detail-grid--feature{align-items:start}
-  .gallery-zoom img{width:100%;height:auto}
+  .detail-cell{height:auto;max-height:none}
+  .gallery-zoom{height:auto}
+  .gallery-zoom img{width:100%;height:auto;max-height:68vh;object-fit:contain}
   .lightbox-caption{display:none}
 }
