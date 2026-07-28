@@ -1,0 +1,10 @@
+MAISONEVE — portfolio launch update, 2026-07-28
+
+- Added Maisoneve_Projects.html with 8 portfolio objects.
+- Added 8 separate project pages: Maisoneve_Project_01.html — Maisoneve_Project_08.html.
+- Yacht excluded from portfolio and project imagery.
+- Homepage project carousel updated from 5 cards + placeholder to 8 clickable project cards.
+- Navigation “Проекты” now opens the portfolio page across the site.
+- Portfolio images optimized to WebP and lazy-loaded in galleries.
+- Direct contact only: Telegram / WhatsApp / hello@maisoneve.studio. No contact forms or Formspree added.
+- Guide / Boosty intentionally not included in this launch package.

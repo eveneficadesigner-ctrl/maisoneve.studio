@@ -189,196 +189,6 @@
     line-height: 1.6;
   }
 
-  .form-group {
-    margin-bottom: 32px;
-  }
-  .form-label {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--brass);
-    margin-bottom: 10px;
-  }
-  .form-input,
-  .form-textarea,
-  .form-select {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(58,42,30,0.2);
-    padding: 10px 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    color: var(--dark);
-    outline: none;
-    transition: border-color 0.3s;
-    appearance: none;
-  }
-  .form-input::placeholder,
-  .form-textarea::placeholder { color: rgba(28,28,28,0.3); }
-  .form-input:focus,
-  .form-textarea:focus,
-  .form-select:focus { border-color: var(--brass); }
-
-  .form-textarea {
-    resize: none;
-    height: 80px;
-    line-height: 1.6;
-  }
-
-  /* contact type toggle */
-  .contact-toggle {
-    display: flex;
-    gap: 24px;
-    margin-top: 4px;
-  }
-  .toggle-opt {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    color: rgba(28,28,28,0.6);
-  }
-  .toggle-opt input[type="radio"] { display: none; }
-  .toggle-dot {
-    width: 14px;
-    height: 14px;
-    border: 1px solid rgba(58,42,30,0.3);
-    border-radius: 50%;
-    flex-shrink: 0;
-    position: relative;
-    transition: border-color 0.25s;
-  }
-  .toggle-opt input:checked ~ .toggle-dot {
-    border-color: var(--brass);
-  }
-  .toggle-opt input:checked ~ .toggle-dot::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--brass);
-  }
-
-  /* service checkboxes */
-  .service-checks {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 24px;
-    margin-top: 4px;
-  }
-  .check-opt {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    font-size: 13px;
-    color: rgba(28,28,28,0.65);
-  }
-  .check-opt input[type="checkbox"] { display: none; }
-  .check-box {
-    width: 14px;
-    height: 14px;
-    border: 1px solid rgba(58,42,30,0.3);
-    flex-shrink: 0;
-    position: relative;
-    transition: border-color 0.25s;
-  }
-  .check-opt input:checked ~ .check-box {
-    border-color: var(--brass);
-    background: var(--brass);
-  }
-  .check-opt input:checked ~ .check-box::after {
-    content: '';
-    position: absolute;
-    top: 2px; left: 5px;
-    width: 4px; height: 7px;
-    border: 1.5px solid #fff;
-    border-top: none;
-    border-left: none;
-    transform: rotate(45deg);
-  }
-
-  /* partner category pills */
-  .category-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .pill-opt { display: none; }
-  .pill-label {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: rgba(28,28,28,0.55);
-    border: 1px solid rgba(58,42,30,0.18);
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: all 0.25s;
-    user-select: none;
-  }
-  .pill-opt:checked + .pill-label {
-    border-color: var(--brass);
-    color: var(--walnut);
-    background: rgba(156,125,74,0.08);
-  }
-
-  /* submit button */
-  .form-submit {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--walnut);
-    border: none;
-    padding: 17px 48px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 8px;
-  }
-  .form-submit:hover { background: var(--brass); }
-
-  .form-note {
-    font-size: 12px;
-    color: rgba(28,28,28,0.35);
-    margin-top: 20px;
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  /* ── FORM STATUS ── */
-  .form-status {
-    display: none;
-    margin: 20px 0 0;
-    padding: 14px 16px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .form-success {
-    background: rgba(156,125,74,0.12);
-    border-left: 2px solid var(--brass);
-    color: var(--walnut);
-  }
-  .form-error {
-    background: rgba(130,50,40,0.08);
-    border-left: 2px solid #8a463c;
-    color: #6f342d;
-  }
-  .form-honeypot {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
@@ -514,6 +324,152 @@ body.mobile-menu-open .mobile-menu-overlay {
 }
 
 </style>
+
+<style id="maisoneve-messenger-styles">
+  .messenger-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .messenger-link {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40px;
+    padding: 0 !important;
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 50%;
+    color: rgba(255,255,255,.72) !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    transition: color .25s ease, border-color .25s ease, background-color .25s ease, transform .25s ease;
+  }
+  .messenger-link:hover,
+  .messenger-link:focus-visible {
+    color: #fff !important;
+    border-color: rgba(255,255,255,.72);
+    background: rgba(255,255,255,.08);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .messenger-link svg {
+    width: 19px;
+    height: 19px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.55;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .messenger-link--telegram svg {
+    fill: currentColor;
+    stroke: none;
+  }
+  .messenger-links--mobile { margin-top: 18px; }
+  .messenger-links--hero { margin-left: 4px; }
+  .messenger-links--contact { margin-top: 18px; }
+  .messenger-links--footer { justify-content: center; }
+  .footer-contacts .messenger-links--footer { margin-left: 2px; }
+
+  @media (max-width: 700px) {
+    .messenger-link {
+      width: 44px;
+      height: 44px;
+      flex-basis: 44px;
+    }
+    .messenger-link svg { width: 20px; height: 20px; }
+    .messenger-links--hero { display: none; }
+  }
+</style>
+
+<style id="maisoneve-direct-contact-styles">
+  .direct-contact-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .direct-contact-action {
+    min-width: 138px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    border: 1px solid #1C1C1C;
+    text-decoration: none !important;
+    font: 400 10px/1.2 'Inter', Arial, sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    transition: transform .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .direct-contact-action:hover,
+  .direct-contact-action:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .direct-contact-action--telegram {
+    color: #F5F0E8 !important;
+    background: #1C1C1C;
+    border-color: #1C1C1C;
+  }
+  .direct-contact-action--telegram:hover,
+  .direct-contact-action--telegram:focus-visible { background: #3A2A1E; border-color: #3A2A1E; }
+  .direct-contact-action--whatsapp {
+    color: #fff !important;
+    background: #9C7D4A;
+    border-color: #9C7D4A;
+  }
+  .direct-contact-action--whatsapp:hover,
+  .direct-contact-action--whatsapp:focus-visible { background: #806538; border-color: #806538; }
+  .direct-contact-action--email {
+    color: #1C1C1C !important;
+    background: #F5F0E8;
+    border-color: rgba(28,28,28,.38);
+  }
+  .direct-contact-action--email:hover,
+  .direct-contact-action--email:focus-visible { background: #EDE8DF; border-color: #1C1C1C; }
+  .direct-contact-actions--hero {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .direct-contact-actions--hero .direct-contact-action {
+    min-width: auto;
+    padding: 13px 18px;
+    font-size: 9px;
+    letter-spacing: .15em;
+  }
+  .direct-contact-card {
+    padding: 32px;
+    border: 1px solid rgba(58,42,30,.16);
+    background: rgba(255,255,255,.24);
+  }
+  .direct-contact-label {
+    margin: 0 0 18px;
+    color: #9C7D4A;
+    font: 400 10px/1.4 'Inter', Arial, sans-serif;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+  }
+  .direct-contact-note {
+    margin: 22px 0 0;
+    color: rgba(28,28,28,.42);
+    font: 300 12px/1.7 'Inter', Arial, sans-serif;
+  }
+  @media (max-width: 700px) {
+    .direct-contact-actions { align-items: stretch; flex-direction: column; }
+    .direct-contact-action { width: 100%; min-width: 0; }
+    .direct-contact-actions--hero { width: 100%; }
+    .direct-contact-card { padding: 24px 20px; }
+  }
+</style>
 </head>
 <body>
 
@@ -524,7 +480,7 @@ body.mobile-menu-open .mobile-menu-overlay {
   <div>
     <p class="mobile-menu-label">Навигация</p>
     <div class="mobile-menu-links">
-      <a href="/#projects">Проекты</a>
+      <a href="Maisoneve_Projects.html">Проекты</a>
       <a href="Maisoneve_Services.html">Услуги</a>
       <a href="Maisoneve_About.html">О студии</a>
       <a href="Maisoneve_Contact.html">Связаться</a>
@@ -534,6 +490,14 @@ body.mobile-menu-open .mobile-menu-overlay {
   <div class="mobile-menu-bottom">
     <a href="mailto:hello@maisoneve.studio">hello@maisoneve.studio</a>
     <a href="https://maisoneve.studio">maisoneve.studio</a>
+    <div class="messenger-links messenger-links--mobile" aria-label="Мессенджеры">
+      <a class="messenger-link messenger-link--whatsapp" href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve." target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp" title="WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 11.8a8.3 8.3 0 0 1-12.2 7.3L3.7 20.3l1.2-4.2a8.3 8.3 0 1 1 15.4-4.3Z"/><path d="M8.1 7.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.6.5 1.1 1.4 2 2.5 2.6.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.9c.3.1.4.3.4.5 0 .5-.2 1.5-.8 2-.6.5-1.4.8-2.3.6-1.2-.2-2.8-.7-4.6-2.3-1.5-1.3-2.5-3-2.8-4.2-.3-1.1 0-2 .4-2.5.4-.5.8-.7 1.2-.7"/></svg>
+      </a>
+      <a class="messenger-link messenger-link--telegram" href="https://t.me/EVenefica" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-3.1 15.2c-.2 1.1-.9 1.3-1.8.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8L17.2 6.5c.4-.3-.1-.5-.6-.2L5.8 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L19.6 3c.9-.3 1.7.2 1.4 1Z"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -542,7 +506,7 @@ body.mobile-menu-open .mobile-menu-overlay {
 <nav>
   <a href="/" class="nav-logo">Maisoneve</a>
   <ul class="nav-links">
-    <li><a href="/#projects">Проекты</a></li>
+    <li><a href="Maisoneve_Projects.html">Проекты</a></li>
     <li><a href="Maisoneve_Services.html">Услуги</a></li>
     <li><a href="Maisoneve_About.html">О студии</a></li>
     <li><a href="Maisoneve_Contact.html" class="active">Связаться</a></li>
@@ -556,7 +520,7 @@ body.mobile-menu-open .mobile-menu-overlay {
     <div class="left-top">
       <p class="left-eyebrow">Maisoneve · Связаться</p>
       <h1 class="left-title">Узнайте,<br>подходим ли мы<br><em>друг другу</em></h1>
-      <p class="left-sub">Расскажите о проекте или предложении о сотрудничестве. Мы внимательно рассмотрим обращение и ответим на указанный адрес электронной почты.</p>
+      <p class="left-sub">Выберите удобный способ связи — Telegram, WhatsApp или электронную почту. Напишите о проекте или предложении о сотрудничестве напрямую.</p>
 
       <div class="tab-switcher">
         <button class="tab-btn active" onclick="switchTab('client', this)">Клиент</button>
@@ -567,6 +531,14 @@ body.mobile-menu-open .mobile-menu-overlay {
     <div class="left-bottom">
       <div class="left-contacts">
         <a href="mailto:hello@maisoneve.studio">hello@maisoneve.studio</a>
+        <div class="messenger-links messenger-links--contact" aria-label="Мессенджеры">
+          <a class="messenger-link messenger-link--whatsapp" href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve." target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp" title="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 11.8a8.3 8.3 0 0 1-12.2 7.3L3.7 20.3l1.2-4.2a8.3 8.3 0 1 1 15.4-4.3Z"/><path d="M8.1 7.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.6.5 1.1 1.4 2 2.5 2.6.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.9c.3.1.4.3.4.5 0 .5-.2 1.5-.8 2-.6.5-1.4.8-2.3.6-1.2-.2-2.8-.7-4.6-2.3-1.5-1.3-2.5-3-2.8-4.2-.3-1.1 0-2 .4-2.5.4-.5.8-.7 1.2-.7"/></svg>
+          </a>
+          <a class="messenger-link messenger-link--telegram" href="https://t.me/EVenefica" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-3.1 15.2c-.2 1.1-.9 1.3-1.8.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8L17.2 6.5c.4-.3-.1-.5-.6-.2L5.8 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L19.6 3c.9-.3 1.7.2 1.4 1Z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -576,130 +548,32 @@ body.mobile-menu-open .mobile-menu-overlay {
 
     <!-- TAB: CLIENT -->
     <div class="tab-panel active" id="tab-client">
-      <h2 class="form-title">Расскажите о проекте</h2>
-      <p class="form-sub">Заполните форму — и мы свяжемся с вами, чтобы обсудить детали.</p>
-
-      <div class="form-status form-success" data-form-success aria-live="polite">Спасибо. Заявка отправлена — мы ответим в течение одного рабочего дня.</div>
-      <div class="form-status form-error" data-form-error aria-live="assertive"></div>
-
-      <form id="client-form" class="js-formspree-form" action="https://formspree.io/f/mykqwdvl" method="POST" accept-charset="UTF-8">
-        <input type="hidden" name="_subject" value="Новая заявка на проект — Maisoneve">
-        <input type="hidden" name="request_type" value="Клиентская заявка">
-
-        <div class="form-honeypot" aria-hidden="true">
-          <label>Не заполняйте это поле
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          </label>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="client-name">Ваше имя</label>
-          <input class="form-input" id="client-name" type="text" name="name" placeholder="Как вас зовут" autocomplete="name" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="client-email">Email</label>
-          <input class="form-input" id="client-email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Что вас интересует</label>
-          <div class="service-checks">
-            <label class="check-opt"><input type="checkbox" name="services" value="Консультация"><span class="check-box"></span>Консультация</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Концепция"><span class="check-box"></span>Концепция</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Планировочное решение"><span class="check-box"></span>Планировочное решение</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Дизайн-проект"><span class="check-box"></span>Дизайн-проект</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Интерьер под ключ"><span class="check-box"></span>Интерьер под ключ</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Интерьер для инвестиций"><span class="check-box"></span>Интерьер для инвестиций</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Home Staging"><span class="check-box"></span>Home Staging</label>
-            <label class="check-opt"><input type="checkbox" name="services" value="Пока не знаю"><span class="check-box"></span>Пока не знаю</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="client-city">Город</label>
-          <input class="form-input" id="client-city" type="text" name="city" placeholder="Где находится объект">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="client-area">Площадь объекта</label>
-          <input class="form-input" id="client-area" type="text" name="area" placeholder="Примерно, м²" inputmode="decimal">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="client-message">Расскажите о проекте</label>
-          <textarea class="form-textarea" id="client-message" name="message" placeholder="Что важно для вас, какой результат ожидаете, есть ли сроки — всё, что считаете нужным" required></textarea>
-        </div>
-
-        <button type="submit" class="form-submit">Рассказать о проекте</button>
-        <p class="form-note">Мы свяжемся с вами в течение одного рабочего дня.</p>
-      </form>
+      <h2 class="form-title">Обсудить проект</h2>
+      <p class="form-sub">Выберите удобный способ связи и напишите нам напрямую. Коротко расскажите об объекте, задаче и желаемых сроках.</p>
+      <div class="direct-contact-card">
+        <p class="direct-contact-label">Напишите нам</p>
+        <div class="direct-contact-actions" aria-label="Способы связи">
+      <a class="direct-contact-action direct-contact-action--telegram" href="https://t.me/EVenefica" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="direct-contact-action direct-contact-action--whatsapp" href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="direct-contact-action direct-contact-action--email" href="mailto:hello@maisoneve.studio?subject=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20Maisoneve&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve.">Почта</a>
+    </div>
+        <p class="direct-contact-note">Отвечаем в течение одного рабочего дня.</p>
+      </div>
     </div>
 
     <!-- TAB: PARTNER -->
     <div class="tab-panel" id="tab-partner">
-      <h2 class="form-title">Работать вместе</h2>
-      <p class="form-sub">Maisoneve открыта к партнёрству с теми, кто разделяет наш стандарт — внимательность, качество, уважение к деталям.</p>
-
-      <div class="form-status form-success" data-form-success aria-live="polite">Спасибо. Предложение отправлено — мы внимательно его рассмотрим и ответим по электронной почте.</div>
-      <div class="form-status form-error" data-form-error aria-live="assertive"></div>
-
-      <form id="partner-form" class="js-formspree-form" action="https://formspree.io/f/mykqwdvl" method="POST" accept-charset="UTF-8">
-        <input type="hidden" name="_subject" value="Новое предложение о сотрудничестве — Maisoneve">
-        <input type="hidden" name="request_type" value="Партнёрское предложение">
-
-        <div class="form-honeypot" aria-hidden="true">
-          <label>Не заполняйте это поле
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          </label>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="partner-name">Ваше имя</label>
-          <input class="form-input" id="partner-name" type="text" name="name" placeholder="Как вас зовут" autocomplete="name" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="partner-email">Email</label>
-          <input class="form-input" id="partner-email" type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Кто вы</label>
-          <div class="category-pills">
-            <input type="radio" name="who" value="Дизайнер или архитектор" id="p1" class="pill-opt" required>
-            <label for="p1" class="pill-label">Дизайнер или архитектор</label>
-
-            <input type="radio" name="who" value="Строительная бригада или подрядчик" id="p2" class="pill-opt">
-            <label for="p2" class="pill-label">Строительная бригада или подрядчик</label>
-
-            <input type="radio" name="who" value="Поставщик мебели, материалов, декора" id="p3" class="pill-opt">
-            <label for="p3" class="pill-label">Поставщик мебели, материалов, декора</label>
-
-            <input type="radio" name="who" value="Фотограф или стилист" id="p4" class="pill-opt">
-            <label for="p4" class="pill-label">Фотограф или стилист</label>
-
-            <input type="radio" name="who" value="Агентство недвижимости или застройщик" id="p5" class="pill-opt">
-            <label for="p5" class="pill-label">Агентство недвижимости или застройщик</label>
-
-            <input type="radio" name="who" value="Другое" id="p6" class="pill-opt">
-            <label for="p6" class="pill-label">Другое</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="partner-message">О себе и своей работе</label>
-          <textarea class="form-textarea" id="partner-message" name="message" placeholder="Коротко — чем занимаетесь, как видите сотрудничество" required></textarea>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="partner-portfolio">Портфолио или сайт</label>
-          <input class="form-input" id="partner-portfolio" type="url" name="portfolio" placeholder="https://...">
-        </div>
-
-        <button type="submit" class="form-submit">Отправить</button>
-        <p class="form-note">Мы внимательно рассматриваем каждое предложение и отвечаем на указанный адрес электронной почты.</p>
-      </form>
+      <h2 class="form-title">Предложить сотрудничество</h2>
+      <p class="form-sub">Maisoneve открыта к партнёрству с теми, кто разделяет наш стандарт — внимательность, качество и уважение к деталям.</p>
+      <div class="direct-contact-card">
+        <p class="direct-contact-label">Напишите нам</p>
+        <div class="direct-contact-actions" aria-label="Способы связи">
+      <a class="direct-contact-action direct-contact-action--telegram" href="https://t.me/EVenefica" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="direct-contact-action direct-contact-action--whatsapp" href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B8%D1%82%D1%8C%20%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20Maisoneve." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="direct-contact-action direct-contact-action--email" href="mailto:hello@maisoneve.studio?subject=%D0%A1%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20%D1%81%20Maisoneve&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B8%D1%82%D1%8C%20%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20Maisoneve.">Почта</a>
+    </div>
+        <p class="direct-contact-note">Коротко представьтесь и приложите ссылку на портфолио, сайт или материалы.</p>
+      </div>
     </div>
 
   </div>
@@ -708,7 +582,15 @@ body.mobile-menu-open .mobile-menu-overlay {
 <!-- FOOTER -->
 <footer style="background: var(--dark); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06);">
   <a href="/" style="font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;">Maisoneve</a>
-  <p style="font-size: 11px; color: rgba(255,255,255,0.18);">© 2026 Maisoneve</p>
+    <div class="messenger-links messenger-links--footer" aria-label="Мессенджеры">
+    <a class="messenger-link messenger-link--whatsapp" href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve." target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 11.8a8.3 8.3 0 0 1-12.2 7.3L3.7 20.3l1.2-4.2a8.3 8.3 0 1 1 15.4-4.3Z"/><path d="M8.1 7.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.6.5 1.1 1.4 2 2.5 2.6.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.9c.3.1.4.3.4.5 0 .5-.2 1.5-.8 2-.6.5-1.4.8-2.3.6-1.2-.2-2.8-.7-4.6-2.3-1.5-1.3-2.5-3-2.8-4.2-.3-1.1 0-2 .4-2.5.4-.5.8-.7 1.2-.7"/></svg>
+    </a>
+    <a class="messenger-link messenger-link--telegram" href="https://t.me/EVenefica" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" title="Telegram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-3.1 15.2c-.2 1.1-.9 1.3-1.8.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8L17.2 6.5c.4-.3-.1-.5-.6-.2L5.8 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L19.6 3c.9-.3 1.7.2 1.4 1Z"/></svg>
+    </a>
+  </div>
+<p style="font-size: 11px; color: rgba(255,255,255,0.18);">© 2026 Maisoneve</p>
 </footer>
 
 <script>
@@ -719,56 +601,6 @@ body.mobile-menu-open .mobile-menu-overlay {
     btn.classList.add('active');
   }
 
-  document.querySelectorAll('.js-formspree-form').forEach(form => {
-    form.addEventListener('submit', async event => {
-      event.preventDefault();
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      const panel = form.closest('.tab-panel');
-      const successMessage = panel.querySelector('[data-form-success]');
-      const errorMessage = panel.querySelector('[data-form-error]');
-      const submitButton = form.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.textContent;
-
-      successMessage.style.display = 'none';
-      errorMessage.style.display = 'none';
-      errorMessage.textContent = '';
-      submitButton.disabled = true;
-      submitButton.textContent = 'Отправляем…';
-      form.setAttribute('aria-busy', 'true');
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (!response.ok) {
-          const data = await response.json().catch(() => ({}));
-          const details = Array.isArray(data.errors)
-            ? data.errors.map(error => error.message).join(' ')
-            : '';
-          throw new Error(details || 'Не удалось отправить форму.');
-        }
-
-        form.reset();
-        successMessage.style.display = 'block';
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } catch (error) {
-        errorMessage.textContent = `${error.message} Попробуйте ещё раз или напишите на hello@maisoneve.studio.`;
-        errorMessage.style.display = 'block';
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-        form.removeAttribute('aria-busy');
-      }
-    });
-  });
 </script>
 
 
