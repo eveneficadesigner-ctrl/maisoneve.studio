@@ -55,82 +55,195 @@
   .back-to-top{transition:none;}
 }
 </style>
-
-<style id="maisoneve-email-copy-styles">
-  .email-copy-button { font: inherit; cursor: pointer; }
-  button.direct-contact-action { font-family: inherit; cursor: pointer; }
-  .cta-actions .email-copy-action {
-    border: 1px solid rgba(255,255,255,.25);
-    padding: 13px 18px;
-    color: inherit;
-    background: transparent;
-    font: inherit;
-    font-size: 10px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
-  .cta-actions .email-copy-action:hover,
-  .cta-actions .email-copy-action:focus-visible {
-    border-color: var(--brass, #9C7D4A);
-    color: #fff;
-    outline: none;
-  }
-  .email-copy-icon {
-    width: 42px;
-    height: 42px;
-    flex: 0 0 42px;
-    display: inline-flex;
+<style id="maisoneve-contact-polish-v1">
+  /* Единая система контактных кнопок */
+  .direct-contact-actions,
+  .cta-actions {
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    color: inherit;
-    background: transparent;
-    opacity: .72;
-    transition: opacity .25s ease, transform .25s ease, border-color .25s ease;
+    flex-wrap: wrap;
+    gap: 12px;
   }
-  .email-copy-icon:hover,
-  .email-copy-icon:focus-visible { opacity: 1; transform: translateY(-2px); outline: none; }
-  .email-copy-icon svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-  .email-copy-toast {
-    position: fixed;
-    left: 50%;
-    bottom: 28px;
-    z-index: 2000;
-    transform: translate(-50%, 16px);
-    padding: 12px 18px;
-    border: 1px solid rgba(255,255,255,.14);
-    background: #1C1C1C;
-    color: #F5F0E8;
-    font: 400 11px/1.3 'Inter', Arial, sans-serif;
-    letter-spacing: .08em;
-    box-shadow: 0 12px 40px rgba(0,0,0,.24);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .2s ease, transform .2s ease;
+
+  .direct-contact-action,
+  .cta-actions a {
+    box-sizing: border-box !important;
+    width: 154px !important;
+    min-width: 154px !important;
+    height: 52px !important;
+    padding: 0 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 0 !important;
+    text-decoration: none !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: .18em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap;
+    transition:
+      transform .25s ease,
+      background-color .25s ease,
+      color .25s ease,
+      border-color .25s ease !important;
   }
-  .email-copy-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
-  @media (max-width: 700px) {
-    .email-copy-icon { width: 44px; height: 44px; flex-basis: 44px; }
+
+  .direct-contact-action:hover,
+  .direct-contact-action:focus-visible,
+  .cta-actions a:hover,
+  .cta-actions a:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  /* Главный экран: три равные компактные кнопки */
+  .direct-contact-actions--hero {
+    justify-content: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .direct-contact-actions--hero .direct-contact-action {
+    width: 116px !important;
+    min-width: 116px !important;
+    height: 46px !important;
+    padding: 0 12px !important;
+    font-size: 9px !important;
+    letter-spacing: .14em !important;
+  }
+
+  /* На главной справа больше нет второго набора контактов */
+  .hero-bottom {
+    justify-content: flex-start !important;
+  }
+
+  /* Единый минимальный подвал без повторения контактов */
+  .site-footer {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 112px;
+    padding: 36px 48px;
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 32px;
+    background: #1C1C1C !important;
+    border-top: 1px solid rgba(255,255,255,.07);
+  }
+
+  .site-footer__brand {
+    justify-self: start;
+    color: rgba(245,240,232,.52) !important;
+    text-decoration: none !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase;
+  }
+
+  .site-footer__nav {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .site-footer__nav a {
+    color: rgba(245,240,232,.38) !important;
+    text-decoration: none !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: .19em !important;
+    text-transform: uppercase;
+    transition: color .25s ease;
+  }
+
+  .site-footer__nav a:hover,
+  .site-footer__nav a:focus-visible {
+    color: rgba(245,240,232,.88) !important;
+    outline: none;
+  }
+
+  .site-footer__copy {
+    justify-self: end;
+    margin: 0 !important;
+    color: rgba(245,240,232,.22) !important;
+    font-family: 'Inter', Arial, sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: .12em !important;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .direct-contact-actions,
+    .cta-actions {
+      width: min(100%, 320px);
+      margin-left: auto;
+      margin-right: auto;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .direct-contact-action,
+    .cta-actions a,
+    .direct-contact-actions--hero .direct-contact-action {
+      width: 100% !important;
+      min-width: 0 !important;
+      height: 50px !important;
+    }
+
+    .direct-contact-actions--hero {
+      width: min(100%, 320px) !important;
+      margin: 0 !important;
+    }
+
+    .site-footer {
+      min-height: 0;
+      padding: 34px 24px;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 22px;
+      text-align: center;
+    }
+
+    .site-footer__brand,
+    .site-footer__nav,
+    .site-footer__copy {
+      justify-self: center;
+    }
+
+    .site-footer__nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 22px;
+    }
   }
 </style>
 </head><body><nav><a class="nav-logo" href="index.html">Maisoneve</a><ul class="nav-links"><li><a href="index.html">Главная</a></li><li><a aria-current="page" href="Maisoneve_Projects.html">Проекты</a></li><li><a href="Maisoneve_Services.html">Услуги</a></li><li><a href="Maisoneve_About.html">О студии</a></li><li><a href="Maisoneve_Contact.html">Связаться</a></li></ul><button aria-expanded="false" aria-label="Открыть меню" class="mobile-toggle" type="button">☰</button></nav><div class="mobile-menu"><a href="index.html">Главная</a><a href="Maisoneve_Projects.html">Проекты</a><a href="Maisoneve_Services.html">Услуги</a><a href="Maisoneve_About.html">О студии</a><a href="Maisoneve_Contact.html">Связаться</a></div><main class="project-hero project-editorial-page"><section class="project-head"><div><div class="project-actions"><a href="Maisoneve_Projects.html" onclick="if(history.length&gt;1){history.back();return false;}">← Назад</a><a href="Maisoneve_Projects.html">Все проекты</a></div><div class="eyebrow">Проект 02</div><h1 class="project-title">Апартаменты с графичным искусством</h1><p class="project-description">Интерьер построен на диалоге классической архитектуры, тёмного дерева и современной живописи. Контрастные произведения искусства становятся частью композиции пространства, а не отдельным декором.</p></div><dl class="facts"><div class="fact"><dt>Место</dt><dd>Санкт-Петербург</dd></div><div class="fact"><dt>Площадь</dt><dd>118 м²</dd></div><div class="fact"><dt>Тип</dt><dd>Частные апартаменты · Авторская концепция</dd></div></dl></section>
 <section aria-label="Галерея проекта" class="portfolio-detail-grid">
 <div class="detail-grid detail-grid--feature">
-<figure class="detail-cell detail-cell--portrait"><button aria-label="Открыть изображение: гостиная" class="gallery-zoom" type="button"><img alt="Гостиная с исторической лепниной, тёплым деревом и современными мягкими формами" loading="lazy" src="images/portfolio/project-02/01.webp?v=20260728-p02-pathfix"/></button></figure>
-<figure class="detail-cell detail-cell--landscape"><button aria-label="Открыть изображение: кухня-столовая" class="gallery-zoom" type="button"><img alt="Кухня-столовая с тёмным деревом, светлым камнем и латунными деталями" loading="lazy" src="images/portfolio/project-02/06.webp?v=20260728-p02-pathfix"/></button></figure>
+<figure class="detail-cell detail-cell--portrait"><button aria-label="Открыть изображение: гостиная" class="gallery-zoom" type="button"><img alt="Гостиная с исторической лепниной, тёплым деревом и современными мягкими формами" loading="lazy" src="images/portfolio/project-02/01.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/01-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/01.webp?v=20260729-opt1 1024w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
+<figure class="detail-cell detail-cell--landscape"><button aria-label="Открыть изображение: кухня-столовая" class="gallery-zoom" type="button"><img alt="Кухня-столовая с тёмным деревом, светлым камнем и латунными деталями" loading="lazy" src="images/portfolio/project-02/06.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/06-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/06.webp?v=20260729-opt1 1448w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
 </div>
 <div class="detail-grid detail-grid--three">
-<figure class="detail-cell"><button aria-label="Открыть изображение: каминная зона" class="gallery-zoom" type="button"><img alt="Каминная зона с портретной живописью и деревянными дверями" loading="lazy" src="images/portfolio/project-02/02.webp?v=20260728-p02-pathfix"/></button></figure>
-<figure class="detail-cell"><button aria-label="Открыть изображение: спальня" class="gallery-zoom" type="button"><img alt="Спальня в светлой палитре с зелёной банкеткой и акцентным искусством" loading="lazy" src="images/portfolio/project-02/03.webp?v=20260728-p02-pathfix"/></button></figure>
-<figure class="detail-cell"><button aria-label="Открыть изображение: спальня, фронтальный ракурс" class="gallery-zoom" type="button"><img alt="Фронтальный вид спальни с историческими деталями и мягким естественным светом" loading="lazy" src="images/portfolio/project-02/04.webp?v=20260728-p02-pathfix"/></button></figure>
+<figure class="detail-cell"><button aria-label="Открыть изображение: каминная зона" class="gallery-zoom" type="button"><img alt="Каминная зона с портретной живописью и деревянными дверями" loading="lazy" src="images/portfolio/project-02/02.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/02-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/02.webp?v=20260729-opt1 1024w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
+<figure class="detail-cell"><button aria-label="Открыть изображение: спальня" class="gallery-zoom" type="button"><img alt="Спальня в светлой палитре с зелёной банкеткой и акцентным искусством" loading="lazy" src="images/portfolio/project-02/03.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/03-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/03.webp?v=20260729-opt1 1024w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
+<figure class="detail-cell"><button aria-label="Открыть изображение: спальня, фронтальный ракурс" class="gallery-zoom" type="button"><img alt="Фронтальный вид спальни с историческими деталями и мягким естественным светом" loading="lazy" src="images/portfolio/project-02/04.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/04-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/04.webp?v=20260729-opt1 1024w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
 </div>
 <div class="detail-grid detail-grid--three">
-<figure class="detail-cell"><button aria-label="Открыть изображение: ванная комната" class="gallery-zoom" type="button"><img alt="Ванная комната со светлым камнем, деревянной мебелью и латунной сантехникой" loading="lazy" src="images/portfolio/project-02/05.webp?v=20260728-p02-pathfix"/></button></figure>
-<figure class="detail-cell"><button aria-label="Открыть изображение: детская комната" class="gallery-zoom" type="button"><img alt="Светлая детская комната с балетной зоной, зеркалом и мягкими розовыми акцентами" loading="lazy" src="images/portfolio/project-02/07.webp?v=20260728-p02-pathfix"/></button></figure>
-<figure class="detail-cell"><button aria-label="Открыть изображение: второй ракурс детской" class="gallery-zoom" type="button"><img alt="Второй ракурс детской комнаты с кроватью, встроенным хранением и балетным станком" loading="lazy" src="images/portfolio/project-02/08.webp?v=20260728-p02-pathfix"/></button></figure>
+<figure class="detail-cell"><button aria-label="Открыть изображение: ванная комната" class="gallery-zoom" type="button"><img alt="Ванная комната со светлым камнем, деревянной мебелью и латунной сантехникой" loading="lazy" src="images/portfolio/project-02/05.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/05-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/05.webp?v=20260729-opt1 1024w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
+<figure class="detail-cell"><button aria-label="Открыть изображение: детская комната" class="gallery-zoom" type="button"><img alt="Светлая детская комната с балетной зоной, зеркалом и мягкими розовыми акцентами" loading="lazy" src="images/portfolio/project-02/07.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/07-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/07.webp?v=20260729-opt1 1448w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
+<figure class="detail-cell"><button aria-label="Открыть изображение: второй ракурс детской" class="gallery-zoom" type="button"><img alt="Второй ракурс детской комнаты с кроватью, встроенным хранением и балетным станком" loading="lazy" src="images/portfolio/project-02/08.webp?v=20260729-opt1"/ decoding="async" srcset="images/portfolio/project-02/08-960.webp?v=20260729-opt1 960w, images/portfolio/project-02/08.webp?v=20260729-opt1 1448w" sizes="(max-width: 900px) calc(100vw - 48px), 50vw"></button></figure>
 </div>
 </section>
 <div aria-hidden="true" aria-label="Просмотр изображения" aria-modal="true" class="image-lightbox" role="dialog">
@@ -142,7 +255,15 @@
 </div>
 <button aria-label="Следующее изображение" class="lightbox-arrow lightbox-next" type="button">›</button>
 </div>
-<nav aria-label="Навигация по проектам" class="project-nav"><a href="Maisoneve_Project_01.html"><small>Предыдущий проект</small>Квартира с парижским характером</a><a class="next" href="Maisoneve_Project_03.html"><small>Следующий проект</small>Семейные апартаменты под Парижем</a></nav></main><section class="cta"><h2>Обсудим ваш интерьер</h2><p>Напишите удобным способом. Сообщение попадёт напрямую в Maisoneve — без формы на сайте и передачи данных стороннему сервису.</p><div class="cta-actions"><a href="https://t.me/EVenefica" rel="noopener noreferrer" target="_blank">Telegram</a><a href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve." rel="noopener noreferrer" target="_blank">WhatsApp</a><button type="button" class="email-copy-button email-copy-action" data-copy-email="evenefica.designer@gmail.com" aria-label="Скопировать email">Email</button></div></section><footer><a class="footer-logo" href="index.html">Maisoneve</a><div class="footer-links"><a href="Maisoneve_Projects.html">Проекты</a><a href="https://t.me/EVenefica" rel="noopener noreferrer" target="_blank">Telegram</a><a href="https://wa.me/79213245166" rel="noopener noreferrer" target="_blank">WhatsApp</a><button type="button" class="email-copy-button email-copy-icon" data-copy-email="evenefica.designer@gmail.com" aria-label="Скопировать email" title="Скопировать email"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3.5 6.5h17v11h-17z"></path><path d="m4 7 8 6 8-6"></path></svg></button></div><div class="copy">© 2026 Maisoneve</div></footer><script src="portfolio.js"></script>
+<nav aria-label="Навигация по проектам" class="project-nav"><a href="Maisoneve_Project_01.html"><small>Предыдущий проект</small>Квартира с парижским характером</a><a class="next" href="Maisoneve_Project_03.html"><small>Следующий проект</small>Семейные апартаменты под Парижем</a></nav></main><section class="cta"><h2>Обсудим ваш интерьер</h2><p>Расскажите об объекте и задаче — выберите удобный способ связи.</p><div class="cta-actions"><a href="https://t.me/EVenefica" rel="noopener noreferrer" target="_blank">Telegram</a><a href="https://wa.me/79213245166?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D1%81%20Maisoneve." rel="noopener noreferrer" target="_blank">WhatsApp</a><a href="mailto:hello@maisoneve.studio?subject=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%B4%D0%BB%D1%8F%20Maisoneve">Email</a></div></section><footer class="site-footer">
+  <a class="site-footer__brand" href="index.html">Maisoneve</a>
+  <nav class="site-footer__nav" aria-label="Навигация в подвале">
+    <a href="Maisoneve_Projects.html">Проекты</a>
+    <a href="Maisoneve_Services.html">Услуги</a>
+    <a href="Maisoneve_About.html">О студии</a>
+  </nav>
+  <p class="site-footer__copy">© 2026 Maisoneve</p>
+</footer><script src="portfolio.js"></script>
 <script>
 (function(){
   const items=[...document.querySelectorAll('.portfolio-detail-grid .gallery-zoom')];
@@ -159,7 +280,7 @@
   function show(i){
     index=(i+items.length)%items.length;
     const source=items[index].querySelector('img');
-    image.src=source.currentSrc||source.src;
+    image.src=source.src;
     image.alt=source.alt||'';
     caption.textContent=source.alt||'';
   }
@@ -204,55 +325,6 @@
   update();
   button.addEventListener('click', ()=>{
     window.scrollTo({top:0, behavior:reduced ? 'auto' : 'smooth'});
-  });
-})();
-</script>
-
-<script id="maisoneve-email-copy-script">
-(function () {
-  const fallbackCopy = (value) => {
-    const area = document.createElement('textarea');
-    area.value = value;
-    area.setAttribute('readonly', '');
-    area.style.position = 'fixed';
-    area.style.opacity = '0';
-    document.body.appendChild(area);
-    area.select();
-    document.execCommand('copy');
-    area.remove();
-  };
-
-  let toastTimer;
-  const showToast = () => {
-    let toast = document.querySelector('.email-copy-toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.className = 'email-copy-toast';
-      toast.setAttribute('role', 'status');
-      toast.setAttribute('aria-live', 'polite');
-      toast.textContent = 'Email скопирован';
-      document.body.appendChild(toast);
-    }
-    toast.classList.add('is-visible');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
-  };
-
-  document.addEventListener('click', async (event) => {
-    const control = event.target.closest('[data-copy-email]');
-    if (!control) return;
-    event.preventDefault();
-    const value = control.getAttribute('data-copy-email');
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(value);
-      } else {
-        fallbackCopy(value);
-      }
-      showToast();
-    } catch (error) {
-      try { fallbackCopy(value); showToast(); } catch (_) {}
-    }
   });
 })();
 </script>
